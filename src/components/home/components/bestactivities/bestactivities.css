@@ -1,0 +1,98 @@
+.bestactivities-heading {
+    font-family: Gilroy;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 48.36px;
+    color: #282C30;
+}
+
+.bestactivities-para {
+    font-family: Gilroy;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 16px;
+    color: #282C30;
+}
+
+.activity-cards {
+    border: 1px solid #DBDBDB;
+    transition: all 300ms ease-in-out;
+}
+
+.activity-cards:hover {
+    border: 1px solid transparent;
+    box-shadow: 0px 2px 56px 0px #00000029;
+}
+
+.activity-name {
+    font-family: Gilroy;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #282C30;
+}
+
+.activity-time {
+    font-family: Gilroy;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 12.76px;
+}
+
+.company-name {
+    font-family: Gilroy;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16.93px;
+    color: #FBA919;
+}
+
+.company-feature {
+    font-family: Gilroy;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 16px;
+    color: #BC1A1A;
+}
+
+.price-sec {
+    text-align: right;
+}
+
+.striked-price {
+    font-family: Gilroy;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #282C30;
+}
+
+.final-price {
+    font-family: Gilroy;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #282C30;
+}
+
+.btn-book {
+    background: linear-gradient(180deg, #5773E4 0%, #10162F 136.84%);
+    border: none;
+    border-image-source: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.22) 100%);
+    box-shadow: 0px 4px 16px 0px #00000038;
+    border-radius: 10px;
+    padding: 6px 18px;
+    color: #ffffff;
+    font-family: Gilroy;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 15.72px;
+}
+
+.per-head {
+    font-family: Gilroy;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 16px;
+    color: #747474;
+}

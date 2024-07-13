@@ -1,0 +1,27 @@
+.hero-bg {
+    background-image: url('../../../../../public/images/home/herobg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.hero-text {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+}
+
+.hero-subtext {
+    font-family: Gilroy;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.search-heading {
+    font-family: Gilroy;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 40px;
+    text-align: left;
+}

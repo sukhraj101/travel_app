@@ -1,0 +1,32 @@
+.video-sec-bg {
+    background-image: url('../../../../../public/images/home/videosec.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+}
+
+.video-sec-bg img {
+    width: 100%;
+    max-width: 100px;
+}
+
+.videosec-subheading {
+    font-family: Gluten;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 21.18px;
+}
+
+.videosec-heading {
+    font-family: Gilroy;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 58.03px;
+}
+
+.videosec-heading span {
+    font-family: Gilroy;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 58.8px;
+}

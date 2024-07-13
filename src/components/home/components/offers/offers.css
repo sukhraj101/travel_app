@@ -1,0 +1,40 @@
+.offers-sec {
+    background: linear-gradient(93.34deg, #2D3C78 17.95%, #5161A2 95.54%);
+}
+
+.offers-content {
+    padding-top: 65px;
+    padding-bottom: 150px;
+}
+
+.offers-subhead {
+    font-family: Gluten;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 17.65px;
+    color: #FBA919;
+}
+
+.offers-heading {
+    font-family: Gilroy;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 47.08px;
+    max-width: 515px;
+}
+
+.offers-heading span {
+    font-family: Gilroy;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 49px;
+}
+
+.offers-cards {
+    margin-top: -90px;
+}
+
+.offer-card {
+    box-shadow: 0px 4px 24px 0px #00000054;
+    border-radius: 24px;
+}
