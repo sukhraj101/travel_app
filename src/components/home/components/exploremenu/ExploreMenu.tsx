@@ -97,14 +97,14 @@ const ExploreMenu = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <button className="carousel-control-prev" type="button" data-bs-target="#exploreSlider" data-bs-slide="prev">
-                                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span className="visually-hidden">Previous</span>
-                                </button>
-                                <button className="carousel-control-next" type="button" data-bs-target="#exploreSlider" data-bs-slide="next">
-                                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span className="visually-hidden">Next</span>
-                                </button>
+                                <div className="sliders-controllers d-flex justify-content-between position-absolute pe-none top-50 start-50">
+                                    <button className="carousel-control-prev position-static w-auto pe-auto" type="button" data-bs-target="#exploreSlider" data-bs-slide="prev">
+                                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    </button>
+                                    <button className="carousel-control-next position-static w-auto pe-auto" type="button" data-bs-target="#exploreSlider" data-bs-slide="next">
+                                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
