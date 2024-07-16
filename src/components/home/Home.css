@@ -1,0 +1,13 @@
+.sliders-controllers{
+    width: 110%;
+    transform: translate(-50%,-50%);
+}
+.sliders-controllers .carousel-control-prev,
+.sliders-controllers .carousel-control-next{
+    background: #FBA919;
+    border-radius: 50%;
+}
+.sliders-controllers .carousel-control-prev span,
+.sliders-controllers .carousel-control-next span{
+   background-size: 80%;
+}
