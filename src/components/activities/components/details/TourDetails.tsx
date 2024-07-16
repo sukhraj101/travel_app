@@ -4,7 +4,7 @@ const TourDetails = () => {
   return (
     <>
         <div className="card border-0 mb-6">
-            <div className="card-body rounded-4">
+            <div className="card-body rounded-4 overflow-hidden position-relative">
                 <h5 className="card-title fw-bold text-black lh-sm max-w-xs">
                     Jet Ski Tour of Jeddah: Red Sea, City Skyline, Palm Jumeirah
                 </h5>
@@ -33,6 +33,12 @@ const TourDetails = () => {
                             <span className="fw-medium">Instant Cashback</span>
                         </div>
                     </div>
+                </div>
+                <div className="tour_details_trip_logo position-absolute top-50">
+                    <img src={`${url}/images/details/trip_logo.svg`} alt="trip logo" />
+                </div>
+                <div className="tour_details_bg position-absolute">
+                    <img src={`${url}/images/details/tour_bg.svg`} alt="details_bg" className=""/>
                 </div>
             </div>
         </div>
