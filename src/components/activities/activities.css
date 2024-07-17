@@ -44,3 +44,13 @@
     background-color: #3582D7;
     color: white;
 }
+
+.tour_details_trip_logo{
+    right: 34px;
+    transform: translateY(-50%);
+}
+.tour_details_bg{
+    right: -6%;
+    top: -16%;
+    max-width: 300px;
+}
