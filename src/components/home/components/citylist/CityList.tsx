@@ -3,7 +3,7 @@ const url = import.meta.env.VITE_PUBLIC_URL;
 
 const CityList = () => {
     return (
-        <>
+        <div className="citilist-sec">
             <div className="container-fluid mt-16 mb-10">
                 <div className="container">
                     <div className="row">
@@ -23,7 +23,7 @@ const CityList = () => {
                                 <div className="carousel-inner">
                                     <div className="carousel-item active">
                                         <div className="row">
-                                            <div className="col-md-3 p-5">
+                                        <div className="col-md-3 p-5">
                                                 <div className="position-relative">
                                                     <img src={`${url}/images/home/city1.png`} className='w-100' alt="" />
                                                     <div className="city-name position-absolute top-50 start-50 translate-middle">Riyadh</div>
@@ -31,48 +31,20 @@ const CityList = () => {
                                             </div>
                                             <div className="col-md-3 p-5">
                                                 <div className="position-relative">
-                                                    <img src={`${url}/images/home/city1.png`} className='w-100' alt="" />
-                                                    <div className="city-name position-absolute top-50 start-50 translate-middle">Riyadh</div>
+                                                    <img src={`${url}/images/home/city2.png`} className='w-100' alt="" />
+                                                    <div className="city-name position-absolute top-50 start-50 translate-middle">Jeddah</div>
                                                 </div>
                                             </div>
                                             <div className="col-md-3 p-5">
                                                 <div className="position-relative">
-                                                    <img src={`${url}/images/home/city1.png`} className='w-100' alt="" />
-                                                    <div className="city-name position-absolute top-50 start-50 translate-middle">Riyadh</div>
+                                                    <img src={`${url}/images/home/city3.png`} className='w-100' alt="" />
+                                                    <div className="city-name position-absolute top-50 start-50 translate-middle">Al Madinah</div>
                                                 </div>
                                             </div>
                                             <div className="col-md-3 p-5">
                                                 <div className="position-relative">
-                                                    <img src={`${url}/images/home/city1.png`} className='w-100' alt="" />
-                                                    <div className="city-name position-absolute top-50 start-50 translate-middle">Riyadh</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="carousel-item">
-                                        <div className="row">
-                                            <div className="col-md-3 p-5">
-                                                <div className="position-relative">
-                                                    <img src={`${url}/images/home/city1.png`} className='w-100' alt="" />
-                                                    <div className="city-name position-absolute top-50 start-50 translate-middle">Riyadh</div>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-3 p-5">
-                                                <div className="position-relative">
-                                                    <img src={`${url}/images/home/city1.png`} className='w-100' alt="" />
-                                                    <div className="city-name position-absolute top-50 start-50 translate-middle">Riyadh</div>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-3 p-5">
-                                                <div className="position-relative">
-                                                    <img src={`${url}/images/home/city1.png`} className='w-100' alt="" />
-                                                    <div className="city-name position-absolute top-50 start-50 translate-middle">Riyadh</div>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-3 p-5">
-                                                <div className="position-relative">
-                                                    <img src={`${url}/images/home/city1.png`} className='w-100' alt="" />
-                                                    <div className="city-name position-absolute top-50 start-50 translate-middle">Riyadh</div>
+                                                    <img src={`${url}/images/home/city4.png`} className='w-100' alt="" />
+                                                    <div className="city-name position-absolute top-50 start-50 translate-middle">Dammam</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -87,10 +59,26 @@ const CityList = () => {
                                             </div>
                                             <div className="col-md-3 p-5">
                                                 <div className="position-relative">
-                                                    <img src={`${url}/images/home/city1.png`} className='w-100' alt="" />
-                                                    <div className="city-name position-absolute top-50 start-50 translate-middle">Riyadh</div>
+                                                    <img src={`${url}/images/home/city2.png`} className='w-100' alt="" />
+                                                    <div className="city-name position-absolute top-50 start-50 translate-middle">Jeddah</div>
                                                 </div>
                                             </div>
+                                            <div className="col-md-3 p-5">
+                                                <div className="position-relative">
+                                                    <img src={`${url}/images/home/city3.png`} className='w-100' alt="" />
+                                                    <div className="city-name position-absolute top-50 start-50 translate-middle">Al Madinah</div>
+                                                </div>
+                                            </div>
+                                            <div className="col-md-3 p-5">
+                                                <div className="position-relative">
+                                                    <img src={`${url}/images/home/city4.png`} className='w-100' alt="" />
+                                                    <div className="city-name position-absolute top-50 start-50 translate-middle">Dammam</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="carousel-item">
+                                        <div className="row">
                                             <div className="col-md-3 p-5">
                                                 <div className="position-relative">
                                                     <img src={`${url}/images/home/city1.png`} className='w-100' alt="" />
@@ -99,8 +87,20 @@ const CityList = () => {
                                             </div>
                                             <div className="col-md-3 p-5">
                                                 <div className="position-relative">
-                                                    <img src={`${url}/images/home/city1.png`} className='w-100' alt="" />
-                                                    <div className="city-name position-absolute top-50 start-50 translate-middle">Riyadh</div>
+                                                    <img src={`${url}/images/home/city2.png`} className='w-100' alt="" />
+                                                    <div className="city-name position-absolute top-50 start-50 translate-middle">Jeddah</div>
+                                                </div>
+                                            </div>
+                                            <div className="col-md-3 p-5">
+                                                <div className="position-relative">
+                                                    <img src={`${url}/images/home/city3.png`} className='w-100' alt="" />
+                                                    <div className="city-name position-absolute top-50 start-50 translate-middle">Al Madinah</div>
+                                                </div>
+                                            </div>
+                                            <div className="col-md-3 p-5">
+                                                <div className="position-relative">
+                                                    <img src={`${url}/images/home/city4.png`} className='w-100' alt="" />
+                                                    <div className="city-name position-absolute top-50 start-50 translate-middle">Dammam</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -119,7 +119,7 @@ const CityList = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
