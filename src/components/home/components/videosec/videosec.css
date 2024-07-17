@@ -1,5 +1,5 @@
 .video-sec-bg {
-    background-image: url('../../../../../public/images/home/videosec.png');
+    background-image: url('../../../../../images/home/videosec.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
@@ -11,7 +11,7 @@
 }
 
 .videosec-subheading {
-    font-family: Gluten;
+    font-family: 'Gluten';
     font-size: 24px;
     font-weight: 500;
     line-height: 21.18px;
