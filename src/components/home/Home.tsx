@@ -3,6 +3,7 @@ import CityList from "./components/citylist/CityList";
 import ExploreMenu from "./components/exploremenu/ExploreMenu";
 import Hero from "./components/hero/Hero";
 import Offers from "./components/offers/Offers";
+import Testimonial from "./components/testimonial/testimonial";
 import VideoSec from "./components/videosec/VideoSec";
 import './Home.css';
 
@@ -15,6 +16,7 @@ const Home = () => {
       <VideoSec/>
       <BestActivities/>
       <CityList/>
+      <Testimonial/>
     </>
   )
 }

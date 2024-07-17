@@ -1,0 +1,10 @@
+.common-footer {
+    padding-block: 12px;
+    background-color: #000000;
+}
+.footer-text {
+    color: #ffffff;
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+}
