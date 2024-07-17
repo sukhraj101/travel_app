@@ -1,10 +1,11 @@
 const url = import.meta.env.VITE_PUBLIC_URL;
+import { NavLink } from 'react-router-dom';
 import './header.css'
 
 const Header = () => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg fixed-top">
+      <nav className="navbar navbar-expand-lg">
         <div className="container">
           <button className="navbar-toggler"
             type="button"
@@ -21,13 +22,13 @@ const Header = () => {
             </a>
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0 gap-5">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">Home</a>
+                <NavLink to={'/'} className="nav-link" aria-current="page" >Home</NavLink>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">Menu</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Activities</a>
+                <NavLink className="nav-link" to={'/activities'}>Activities</NavLink>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">Cities</a>
