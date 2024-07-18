@@ -78,3 +78,19 @@
     border: 1px solid #E0E0E0;
     cursor: pointer;
 }
+.gallery-float-text{
+    background: #000000B2;
+    bottom: 20px;
+    left: 20px;
+    padding: 9px;
+}
+.count-adlt{
+    max-width: 80px;
+}
+.count-adlt-number{
+    width: 24px;
+    text-align: center;
+}
+.package-counter{
+    cursor: pointer;
+}

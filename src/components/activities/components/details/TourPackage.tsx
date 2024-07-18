@@ -1,8 +1,34 @@
+import { useState } from "react";
 import TourCalendar from "./TourCalendar";
-
 const url = import.meta.env.VITE_PUBLIC_URL;
 
+
+interface CounterState {
+  adults: number;
+  child: number;
+}
+
 const TourPackage = () => {
+
+  
+  const [counter,setCounter] = useState<CounterState>({
+    adults:1,
+    child:1
+  });
+
+  const updateCounter = (type: keyof CounterState, action: 'increment' | 'decrement') => {
+    setCounter(prev => {
+      const newValue = { ...prev };
+      if (action === 'increment') {
+        newValue[type] += 1;
+      } else if (action === 'decrement' && newValue[type] > 1) {
+        newValue[type] -= 1;
+      }
+      return newValue;
+    });
+  };
+
+
   return (
     <>
       <div className="card border-0 tour-package">
@@ -20,10 +46,14 @@ const TourPackage = () => {
                 <div className="heading-adlt-subtitle fw-bold fs-sm">200 SAR</div>
               </div>
               <div className="count-adlt">
-                <div className="count-adlt-list d-flex align-items-center gap-3">
-                  <i className="fa fa-minus-square-o fs-4" aria-hidden="true"></i>
-                  <span className="count-adlt-number fw-semibold fs-sm">2</span>
-                  <i className="fa fa-plus-square-o fs-4" aria-hidden="true"></i>
+                <div className="count-adlt-list d-flex align-items-center gap-2">
+                  <div className="package-counter" onClick={()=>updateCounter('adults','decrement')}>
+                    <img src={`${url}/images/details/decresing_icon.png`} alt="decreasing_icon" />
+                  </div>
+                  <span className="count-adlt-number fw-semibold fs-sm">{counter.adults}</span>
+                  <div className="package-counter" onClick={()=>updateCounter('adults','increment')}>
+                    <img src={`${url}/images/details/incresing_icon.png`} alt="incresing_icon" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -35,10 +65,14 @@ const TourPackage = () => {
                 <div className="heading-adlt-subtitle fw-bold fs-sm">200 SAR</div>
               </div>
               <div className="count-adlt">
-                <div className="count-adlt-list d-flex align-items-center gap-3">
-                  <i className="fa fa-minus-square-o fs-4" aria-hidden="true"></i>
-                  <span className="count-adlt-number fw-semibold fs-sm">2</span>
-                  <i className="fa fa-plus-square-o fs-4" aria-hidden="true"></i>
+                <div className="count-adlt-list d-flex align-items-center gap-2">
+                  <div className="package-counter" onClick={()=>updateCounter('child','decrement')}>
+                    <img src={`${url}/images/details/decresing_icon.png`} alt="decreasing_icon" />
+                  </div>
+                  <span className="count-adlt-number fw-semibold fs-sm">{counter.child}</span>
+                  <div className="package-counter" onClick={()=>updateCounter('child','increment')}>
+                    <img src={`${url}/images/details/incresing_icon.png`} alt="incresing_icon" />
+                  </div>
                 </div>
               </div>
             </div>
