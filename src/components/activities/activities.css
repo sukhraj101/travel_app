@@ -54,3 +54,27 @@
     top: -16%;
     max-width: 300px;
 }
+.tour-package-location-name{
+    color: #FBA919;
+    font-family: "Poppins", sans-serif;
+}
+.text-clamp{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    /* Number of lines to display */
+    -webkit-line-clamp: 2; /* Number of lines */
+}
+.tour-package-cta::after{
+    content: '';
+    width: 28vw;
+    position: absolute;
+    border: 1px solid #E0E0E0;
+    top: 0;
+    margin-left: 50%;
+    transform: translate(-50%);
+}
+.tour-package-card-calendar{
+    border: 1px solid #E0E0E0;
+    cursor: pointer;
+}
