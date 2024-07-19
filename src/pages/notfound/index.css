@@ -1,0 +1,46 @@
+.not-found { 
+    font-size: 100%;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    font-family: "Roboto", sans-serif;
+}
+.not-found .button {
+    color: #fff;
+    font-size: 1em;
+    font-weight: 300;
+    margin: 30px auto 2rem;
+    border-radius: 3px;
+    position: relative;
+    padding: 0.5em 1.2em;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid #007aff;
+    background-color: #007aff;
+    transition: all .3s linear;
+    text-underline-offset: 4px;
+}
+.not-found .button:hover {color: #fff;background-color: #007aff;}
+.not-found h1 {
+    margin-top: auto;
+    opacity: 0.15;
+    color: #000000;
+    text-align: center;
+    font-size: 15em;
+    font-weight: 200;
+    text-shadow: #000000 1px 1px, #000000 2px 2px, #111111 3px 3px, #111111 4px 4px, #222222 5px 5px, #222222 6px 6px, #333333 7px 7px, #333333 8px 8px, #444444 9px 9px, #444444 10px 10px, #555555 11px 11px, #555555 12px 12px, #666666 13px 13px, #666666 14px 14px, #777777 15px 15px, #777777 16px 16px, #888888 17px 17px, #888888 18px 18px, #999999 19px 19px, #999999 20px 20px, #AAAAAA 21px 21px, #AAAAAA 22px 22px, #BBBBBB 23px 23px, #BBBBBB 24px 24px, #CCCCCC 25px 25px, #CCCCCC 26px 26px, #DDDDDD 27px 27px;
+}
+.not-found p {
+  font-size: 2em;
+  text-align: center;
+  font-weight: 300;
+}
+.not-found .poweredby {
+    font-size: 10px;
+    margin-top: auto;
+}
