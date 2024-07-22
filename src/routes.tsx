@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import Layout from './pages/Layout';
 import HomePage from './pages/home/HomePage';
 import ActivityPage from './pages/activities/ActivityPage';
+import TrackingPage from './pages/tracking/TrackingPage';
 
 
 const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
         {
           path:'/activities',
           element:<ActivityPage/>
+        },
+        {
+          path:'/tracking',
+          element:<TrackingPage/>
         }
       ]
     }
