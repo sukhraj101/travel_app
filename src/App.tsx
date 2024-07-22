@@ -28,7 +28,7 @@ const App = () => {
 console.log(client); 
   return (
      <>
-       {loading ? <div className='loading'>Loading...</div> : (
+       {/* {loading ? <div className='loading'>Loading...</div> : (
           isDomain ?  (
             
               client?.status === 1 ? (
@@ -41,7 +41,11 @@ console.log(client);
           ) : (
             <NotFound />
           ) 
-       )}
+       )} */}
+
+
+<RouterProvider router={router} />
+
        
      </>
   )
