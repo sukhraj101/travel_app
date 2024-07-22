@@ -4,8 +4,7 @@ import Box from './box';
 import './index.css'; 
 import { postRequest } from '../../../service';
 const OnSetupLoad = () => {
-const [client,setClient] = useState({}); 
-const [loading,setLoading] = useState(true);
+ 
 
  
 useEffect(() =>{
@@ -14,6 +13,9 @@ useEffect(() =>{
             const res = await postRequest('v1/check-domain', {});
             if(res?.success){
                setClient(res.data); 
+               if(res.data.status === 1){
+                window.location.reload();
+               }
                setTimeout(() => {
                 fetchWebData();
               },10000);

@@ -20,6 +20,19 @@ const postRequest = async (url: string, params:object, file: number = 0) => {
     return response.data;
 };
 
+ const loginFun = async (loginDetails:unknown) => {
+  const response = await axios.post(
+    `${baseURL}/v1/login`,
+    loginDetails,
+    {
+      headers: headers,
+    },
+    []
+  );
+  return response.data;
+};
+
 export {
-    postRequest
+    postRequest,
+    loginFun
 };

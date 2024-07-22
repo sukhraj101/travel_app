@@ -25,7 +25,7 @@ const App = () => {
         }; 
         fetchWebData();
     },[]); 
-console.log(client);//
+console.log(client); 
   return (
      <>
        {loading ? <div className='loading'>Loading...</div> : (
