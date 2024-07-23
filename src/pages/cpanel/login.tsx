@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { Link } from 'react-router-dom';  
-import { loginFun } from "../../service";
+import { Link } from 'react-router-dom';
+import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import { loginFun } from "../service";
 interface LoginFormInputs {
   email: string;
   password: string;
@@ -36,7 +38,7 @@ const Login = () => {
         });
         localStorage.setItem('accessToken', res.accessToken);
         localStorage.setItem('user', JSON.stringify(res.data));
-        window.location.href = '/cpanel';
+        window.location.href = '/admin/dashboard';
       } else {
         setErrorMessage({
           has: true,

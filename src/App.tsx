@@ -1,10 +1,15 @@
-import { RouterProvider } from 'react-router-dom'
+import { Route, RouterProvider, Routes } from 'react-router-dom'
 import './App.css'
 import { router } from './routes'
 import { useEffect, useState } from 'react';
 import { postRequest } from './service';
 import NotFound from './pages/notfound/notfound';
 import OnSetupLoad from './components/common/onSetupLoad';
+import Layout from './pages/Layout';
+import HomePage from './pages/home/HomePage';
+import Login from './pages/home/login';
+import Dashboard from './pages/cpanel';
+import AdminLayout from './pages/cpanel/layout';
 
 const App = () => {
   const [client,setClient] = useState({});
@@ -24,8 +29,7 @@ const App = () => {
           }
         }; 
         fetchWebData();
-    },[]); 
-console.log(client); 
+    },[]);  
   return (
      <>
        {loading ? <div className='loading'>Loading...</div> : (
@@ -35,14 +39,14 @@ console.log(client);
                 <RouterProvider router={router} />
               ) : (
                <OnSetupLoad/> 
-              )
-            
-            
+              ) 
           ) : (
             <NotFound />
           ) 
        )}
-       
+
+      
+        
      </>
   )
 }
