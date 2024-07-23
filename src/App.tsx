@@ -1,10 +1,10 @@
-import { RouterProvider } from 'react-router-dom'
+import { RouterProvider  } from 'react-router-dom'
 import './App.css'
 import { router } from './routes'
 import { useEffect, useState } from 'react';
 import { postRequest } from './service';
 import NotFound from './pages/notfound/notfound';
-import OnSetupLoad from './components/common/onSetupLoad';
+import OnSetupLoad from './components/common/onSetupLoad'; 
 
 const App = () => {
   const [client,setClient] = useState({});
@@ -24,29 +24,22 @@ const App = () => {
           }
         }; 
         fetchWebData();
-    },[]); 
-console.log(client); 
+    },[]);  
   return (
      <>
-       {/* {loading ? <div className='loading'>Loading...</div> : (
-          isDomain ?  (
-            
-              client?.status === 1 ? (
-                <RouterProvider router={router} />
-              ) : (
-               <OnSetupLoad/> 
-              )
-            
-            
-          ) : (
-            <NotFound />
-          ) 
-       )} */}
-
-
-<RouterProvider router={router} />
-
-       
+         {
+         loading ? <div className='loading'>Loading...</div> : (
+            isDomain ?  (
+                client?.status === 1 ? (
+                  <RouterProvider router={router} />
+                ) : (
+                <OnSetupLoad/> 
+                ) 
+            ) : (
+              <NotFound />
+            ) 
+         )
+         } 
      </>
   )
 }
