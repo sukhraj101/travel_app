@@ -1,15 +1,10 @@
-import { Route, RouterProvider, Routes } from 'react-router-dom'
+import { RouterProvider  } from 'react-router-dom'
 import './App.css'
 import { router } from './routes'
 import { useEffect, useState } from 'react';
 import { postRequest } from './service';
 import NotFound from './pages/notfound/notfound';
-import OnSetupLoad from './components/common/onSetupLoad';
-import Layout from './pages/Layout';
-import HomePage from './pages/home/HomePage';
-import Login from './pages/home/login';
-import Dashboard from './pages/cpanel';
-import AdminLayout from './pages/cpanel/layout';
+import OnSetupLoad from './components/common/onSetupLoad'; 
 
 const App = () => {
   const [client,setClient] = useState({});
@@ -32,21 +27,19 @@ const App = () => {
     },[]);  
   return (
      <>
-       {loading ? <div className='loading'>Loading...</div> : (
-          isDomain ?  (
-            
-              client?.status === 1 ? (
-                <RouterProvider router={router} />
-              ) : (
-               <OnSetupLoad/> 
-              ) 
-          ) : (
-            <NotFound />
-          ) 
-       )}
-
-      
-        
+         {
+         loading ? <div className='loading'>Loading...</div> : (
+            isDomain ?  (
+                client?.status === 1 ? (
+                  <RouterProvider router={router} />
+                ) : (
+                <OnSetupLoad/> 
+                ) 
+            ) : (
+              <NotFound />
+            ) 
+         )
+         } 
      </>
   )
 }

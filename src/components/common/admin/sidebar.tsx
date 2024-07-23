@@ -1,18 +1,22 @@
-import React, { useState } from 'react'
+import AdminMenu from "./components/AdminMenu"
+import { sidebarHeadings } from "./sidebarHeading";
+import { useState} from "react";
 
-export default function AdminSidebar() {
+const AdminSidebar = ()=> {
 
-  const [isActive1, setIsActive1] = useState(false)
-  const [isActive2, setIsActive2] = useState(false)
-  const [isActive3, setIsActive3] = useState(false)
-  const [isActive4, setIsActive4] = useState(false)
-  const [isActive5, setIsActive5] = useState(false)
+  // const [isActive1, setIsActive1] = useState(false)
+  // const [isActive2, setIsActive2] = useState(false)
+  // const [isActive3, setIsActive3] = useState(false)
+  // const [isActive4, setIsActive4] = useState(false)
+  // const [isActive5, setIsActive5] = useState(false)
 
-  const activateSideMenu1 = (e) => { e.preventDefault(); setIsActive1(!isActive1); }
-  const activateSideMenu2 = (e) => { e.preventDefault(); setIsActive2(!isActive2); }
-  const activateSideMenu3 = (e) => { e.preventDefault(); setIsActive3(!isActive3); }
-  const activateSideMenu4 = (e) => { e.preventDefault(); setIsActive4(!isActive4); }
-  const activateSideMenu5 = (e) => { e.preventDefault(); setIsActive5(!isActive5); }
+  // const activateSideMenu1 = (e) => { e.preventDefault(); setIsActive1(!isActive1); }
+  // const activateSideMenu2 = (e) => { e.preventDefault(); setIsActive2(!isActive2); }
+  // const activateSideMenu3 = (e) => { e.preventDefault(); setIsActive3(!isActive3); }
+  // const activateSideMenu4 = (e) => { e.preventDefault(); setIsActive4(!isActive4); }
+  // const activateSideMenu5 = (e) => { e.preventDefault(); setIsActive5(!isActive5); }
+
+
 
   return (
     <>
@@ -20,41 +24,14 @@ export default function AdminSidebar() {
         <div className="scroll-sidebar">
           <nav className="sidebar-nav">
             <ul id="sidebarnav" className="pt-4">
-              <li className="sidebar-item">
-                <a
-                  className="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="index.html"
-                  aria-expanded="false"
-                  ><i className="mdi mdi-view-dashboard"></i><span className="hide-menu">Dashboard</span></a>
-              </li>
-              <li className="sidebar-item">
-                <a
-                  className="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="charts.html"
-                  aria-expanded="false"
-                  ><i className="mdi mdi-chart-bar"></i><span className="hide-menu">Charts</span></a>
-              </li>
-              <li className="sidebar-item">
-                <a
-                  className="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="widgets.html"
-                  aria-expanded="false"
-                  ><i className="mdi mdi-chart-bubble"></i><span className="hide-menu">Widgets</span></a>
-              </li>
-              <li className="sidebar-item">
-                <a
-                  className="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="tables.html"
-                  aria-expanded="false"
-                  ><i className="mdi mdi-border-inside"></i><span className="hide-menu">Tables</span></a>
-              </li>
-              <li className="sidebar-item">
-                <a
-                  className="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="grid.html"
-                  aria-expanded="false"
-                  ><i className="mdi mdi-blur-linear"></i><span className="hide-menu">Full Width</span></a>
-              </li>
+
+              {
+                sidebarHeadings.map((menu)=>{
+                  return <AdminMenu key={menu.id} menuList={menu}/>
+                })
+              } 
+
+              {/*
               <li className="sidebar-item">
                 <a
                   className={`sidebar-link has-arrow waves-effect waves-dark ${isActive1 ? 'active' : ''}`}
@@ -207,7 +184,7 @@ export default function AdminSidebar() {
                     align-items-center
                     text-white
                   "><i className="mdi mdi-cloud-download font-20 me-2"></i>Free</a>
-              </li>
+              </li> */}
             </ul>
           </nav>
         </div>
@@ -215,3 +192,6 @@ export default function AdminSidebar() {
     </>
   )
 }
+
+
+export default AdminSidebar
