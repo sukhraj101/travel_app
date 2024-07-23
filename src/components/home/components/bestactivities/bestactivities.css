@@ -96,3 +96,13 @@
     line-height: 16px;
     color: #747474;
 }
+
+@media only screen and (max-width: 767px) {
+
+    .bestactivities-heading {
+     font-size: 34px;
+
+    }
+
+
+}

@@ -82,7 +82,7 @@
 }
 .header_search_input{
     all: unset;
-    width: 100%;
+    width: 85%;
     color: #1A1A19;
     opacity: 0.5;
     display: block;

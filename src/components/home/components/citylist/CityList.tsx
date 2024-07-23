@@ -4,7 +4,7 @@ const url = import.meta.env.VITE_PUBLIC_URL;
 const CityList = () => {
     return (
         <div className="citilist-sec">
-            <div className="container-fluid mt-16 mb-10">
+            <div className="container-fluid mt-10 mb-10">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 mx-auto">
