@@ -26,3 +26,10 @@
     padding-block: 24px 80px;
     background-color: #F8F8F8;
 }
+
+@media only screen and (max-width: 600px) {
+
+.citylist-heading {
+    font-size: 34px;}
+
+}

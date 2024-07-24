@@ -3,6 +3,7 @@ import AdminHeader from '../../components/common/admin/header';
 import AdminSidebar from '../../components/common/admin/sidebar';
 import { useEffect, useState } from 'react';
 import { postRequest } from '../../service';
+import "./../../../public/admin/assets/css/style.min.css"
 
 const AdminLayout = () => { 
   const [isLogin,setIsLogin] = useState(false);
@@ -46,9 +47,9 @@ const AdminLayout = () => {
         <div className="page-wrapper">
           <div className="page-breadcrumb">
             <div className="row">
-              <div className="col-12 d-flex no-block align-items-center">
+              <div className="col-12 d-flex no-block align-items-center justify-content-between">
                 <h4 className="page-title">Dashboard</h4>
-                <div className="ms-auto text-end">
+                <div className="ms-5 text-end">
                   <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item">
@@ -60,6 +61,7 @@ const AdminLayout = () => {
                     </ol>
                   </nav>
                 </div>
+                <button type="button" className="btn btn-primary ms-auto" disabled>Save Changes</button>
               </div>
             </div>
           </div>

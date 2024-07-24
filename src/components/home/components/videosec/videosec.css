@@ -30,3 +30,13 @@
     font-weight: 800;
     line-height: 58.8px;
 }
+
+
+@media only screen and (max-width: 767px) {
+
+.videosec-heading span{font-size: 30px;}
+
+.videosec-heading {font-size: 35px;}
+
+
+}

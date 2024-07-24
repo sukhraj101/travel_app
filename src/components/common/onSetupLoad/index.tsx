@@ -32,7 +32,7 @@ useEffect(() =>{
   return (
     <>
     <div className="main">
-        <header>
+        <header className="header-onsetup">
             <span className="header-logo">
                 <img src="https://fivvia.com/assets/images/logo_small.svg" alt="logo" />
                 <span>Fivvia</span>

@@ -3,10 +3,12 @@ import { createBrowserRouter } from 'react-router-dom'
 import Layout from './pages/Layout';
 import HomePage from './pages/home/HomePage';
 import ActivityPage from './pages/activities/ActivityPage';
+import TrackingPage from './pages/tracking/TrackingPage';
 import AdminLayout from './pages/cpanel/layout';
 import Dashboard from './pages/cpanel';
 import Login from './pages/home/login';
 import NotFound from './pages/notfound/notfound';
+import CreateTour from './pages/cpanel/tours';
 
 
 const router = createBrowserRouter([
@@ -23,6 +25,10 @@ const router = createBrowserRouter([
           element:<ActivityPage/>
         },
         {
+          path:'/tracking',
+          element:<TrackingPage/>
+        },
+        {
           path:'/login',
           element:<Login />
         }
@@ -35,7 +41,15 @@ const router = createBrowserRouter([
         {
           path:'/cpanel', 
           element:<Dashboard />
-        }        
+        },
+        {
+          path:'/cpanel/tours/listing', 
+          element:<CreateTour />
+        },
+        {
+          path:'/cpanel/tours/create', 
+          element:<CreateTour />
+        }       
       ]
     }, 
     {

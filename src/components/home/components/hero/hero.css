@@ -40,7 +40,8 @@
     height: 40px;
     width: 40px;
 }
-.home-search-wrpr{
+
+.home-search-wrpr {
     background-color: white;
     box-shadow: 0px 2px 20px 0px #00000029;
     width: 100%;
@@ -48,35 +49,43 @@
     padding: 10px 12px 10px 25px;
     border-radius: 16px;
 }
-.home-filter-cityName{
+
+.home-filter-cityName {
     all: unset;
 }
-.home-filters-items-lable{
+
+.home-filters-items-lable {
     font-size: 11px;
     opacity: 60%;
     color: black;
 }
-.home-filter-cityName{
+
+.home-filter-cityName {
     font-size: 14px;
     font-weight: 500;
     color: black;
 }
-.home-filter-cityName::placeholder{
+
+.home-filter-cityName::placeholder {
     font-size: 14px;
     font-weight: 500;
     color: black;
 }
-.filter-country-name{
+
+.filter-country-name {
     flex: 0 1 25%;
 }
-.filter-dates{
+
+.filter-dates {
     flex: 0 1 20%;
 }
-.filter-adults{
+
+.filter-adults {
     flex: 0 1 20%;
 }
+
 .filter-dates::after,
-.filter-adults::after{
+.filter-adults::after {
     content: '';
     position: absolute;
     left: 0;
@@ -84,16 +93,56 @@
     opacity: 10%;
     height: 100%;
 }
+
 input.home-filter-cityName[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
 }
-.home-filter-main-search{
+
+.home-filter-main-search {
     width: 40px;
     height: 40px;
     padding-inline: 8px;
     background: linear-gradient(180deg, #5773E4 0%, #10162F 136.84%);
     border-radius: 10px;
 }
-.home-filter-main-search{
+
+.home-filter-main-search {
     cursor: pointer;
+}
+
+@media only screen and (max-width: 767px) {
+    .home-filters-items {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .vh-mob {
+        height: 70vh !important;
+    }
+
+    .hero-text {
+        font-size: 33px;
+    }
+
+    .hero-subtext {
+        font-family: 'Gilroy';
+        font-size: 16px;
+    }
+
+    .offers-heading {
+        font-size: 20px !important;
+    }
+
+    .offers-heading span {
+        font-size: 30px !important;
+    }
+
+    .offers-content {
+        padding-top: 41px !important;
+        padding-bottom: 102px !important;
+    }
+
+    .explore-heading {
+font-size: 34px;}
+
 }
