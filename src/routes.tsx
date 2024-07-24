@@ -7,6 +7,7 @@ import AdminLayout from './pages/cpanel/layout';
 import Dashboard from './pages/cpanel';
 import Login from './pages/home/login';
 import NotFound from './pages/notfound/notfound';
+import CreateTour from './pages/cpanel/tours';
 
 
 const router = createBrowserRouter([
@@ -35,7 +36,15 @@ const router = createBrowserRouter([
         {
           path:'/cpanel', 
           element:<Dashboard />
-        }        
+        },
+        {
+          path:'/cpanel/tours/listing', 
+          element:<CreateTour />
+        },
+        {
+          path:'/cpanel/tours/create', 
+          element:<CreateTour />
+        }       
       ]
     }, 
     {
