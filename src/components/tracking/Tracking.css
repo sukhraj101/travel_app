@@ -1,0 +1,133 @@
+.tracking_schedule_acco_heading button::after{
+    display: none;
+}
+.tracking_schedule_acco_heading button{
+    color: #00AFF4;
+}
+.schedule_halting_count{
+    background: #4A4A4A;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    color: white;
+}
+.schedule-wrpr .avatar{
+    width: 48px;
+    height: 48px;
+}
+.schedule_tracking_map{
+    border: 2px solid #CBCBCB;
+}
+.schedule_tracking_map .card-body{
+    height: 560px;
+}
+
+
+.tracking_review_star_list{
+    width: 100px;
+}
+.tracking_review_star_progress{
+    width: 100%;
+}
+.tracking_review_star_list img{
+    width: 20px;
+    height: 20px;
+}
+.tracking_review_star_progress_bar{
+    background: #E0E0E0;
+    border-radius: 5px;
+    height: 8px;
+}
+.tracking_review_star_progress_bar span{
+    width: var(--progress);
+    height: 100%;
+    background: #00AFF4;
+    border-radius: 5px;
+}
+.tracking_rating_search_box{
+    border: 1px solid #DDDDDD;
+    flex: 0 1 352px;
+    padding-inline: 18px;
+    padding-block: 10px;
+}
+.tracking_rating_search_input{
+    all: unset;
+    width: 80%;
+}
+.tracking_rating_txt{
+    font-size: 18px;
+    font-family: Poppins;
+}
+.tracking_rating_user_detail p{
+    font-family: 'Poppins';
+}
+.tracking_rating_user_profile{
+    box-shadow: 0px 2px 24px 0px #00000054;
+    border-radius: 50%;
+}
+.tracking_rating_user_profile img{
+    width: 48px;
+    height: 48px;
+}
+.tracking_review_user_feedback {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.tracking_rating_user_content + .tracking_rating_user_content{
+    margin-top: 28px;
+}
+.vertical_line::after{
+    position: absolute;
+    content: '';
+}
+.tracking_navlink{
+    box-shadow: 0px 2px 4px 0px #0000001F;
+}
+.tracking_menu_link.active{
+    border-bottom: 4px solid #FBA919;
+}
+
+
+@media screen and (max-width:1440px) {
+    .tracking_schedual_track_heading{
+        font-size: 14px;
+    }
+    .schedule-wrpr .avatar,
+    .schedule_halting_count {
+        width: 40px;
+        height: 40px;
+    }
+    .schedule_halting_count {
+        font-size: 14px;
+    }
+    .tracking_schedual_accor_btn{
+        font-size: 14px;
+    }
+}
+@media screen and (max-width:1024px) {
+    .mtp{
+        margin-top: 20px;
+    }
+    .tracking_schedule_right_map,
+    .tracking_schedule_left_content{
+        width: 100%;
+    }
+    .tracking_schedule_right_map{
+        margin-top: 20px;
+    }
+}
+@media screen and (max-width:767px) {
+    .tracking_schedule_accor_right{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:430px) {
+    .tracking_schedule_left_card{
+        padding: 15px;
+    }
+    .tracking_schedual_track_heading,
+    .tracking_schedual_accor_btn,
+    .tracking_schedule_accor_hour{
+        font-size:12px !important;
+    }
+}

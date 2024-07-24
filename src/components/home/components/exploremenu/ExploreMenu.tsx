@@ -4,7 +4,7 @@ const url = import.meta.env.VITE_PUBLIC_URL;
 const ExploreMenu = () => {
   return (
     <>
-        <div className="container-fluid mt-16 mb-10">
+        <div className="container-fluid mt-10 mb-10">
             <div className="container">
                 <div className="row">
                     <div className="col-md-8 mx-auto">
@@ -23,23 +23,23 @@ const ExploreMenu = () => {
                                 <div className="carousel-inner">
                                     <div className="carousel-item active">
                                         <div className="row align-items-center">
-                                            <div className="col-md-3">
+                                            <div className="col-md-3 mt-5">
                                                 <img src={`${url}/images/home/explore1.png`} className='w-100' alt="" />
                                             </div>
-                                            <div className="col-md-9">
-                                                <div className="row mb-6">
-                                                    <div className="col-md-6 px-5">
+                                            <div className="col-md-9 ">
+                                                <div className="row ">
+                                                    <div className="col-md-6 mt-5 ">
                                                         <img src={`${url}/images/home/explore2.png`} className='w-100' alt="" />
                                                     </div>
-                                                    <div className="col-md-6 px-5">
+                                                    <div className="col-md-6  mt-5 ">
                                                         <img src={`${url}/images/home/explore3.png`} className='w-100' alt="" />
                                                     </div>
                                                 </div>
                                                 <div className="row">
-                                                    <div className="col-md-6 px-5">
+                                                    <div className="col-md-6 mt-5">
                                                         <img src={`${url}/images/home/explore4.png`} className='w-100' alt="" />
                                                     </div>
-                                                    <div className="col-md-6 px-5">
+                                                    <div className="col-md-6 mt-5">
                                                         <img src={`${url}/images/home/explore5.png`} className='w-100' alt="" />
                                                     </div>
                                                 </div>

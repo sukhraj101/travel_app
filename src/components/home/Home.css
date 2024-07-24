@@ -6,3 +6,8 @@
 .sliders-controllers .carousel-control-next span{
    background-size: 80%;
 }
+@media screen and (max-width:1440px) {
+    .sliders-controllers{
+        width: 100%;
+    }
+}

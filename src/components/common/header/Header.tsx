@@ -6,7 +6,6 @@ import HeaderSearch from './HeaderSearch';
 const Header = () => {
 
   const location = useLocation().pathname;
-  const isHome = location === '/' ? 'pt-4' : 'py-4';
   
 
   return (
@@ -22,13 +21,13 @@ const Header = () => {
             aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className={`collapse navbar-collapse ${isHome}`} id="navbarTogglerDemo01">
+          <div className="collapse navbar-collapse align-items-start pt-4" id="navbarTogglerDemo01">
             <NavLink className="navbar-brand" to="/">
               <img src={`${url}/images/common/logo.png`} alt="logo" />
             </NavLink>
             {
               location === '/' ? (
-                <ul className="navbar-nav mx-auto mb-2 mb-lg-0 gap-5">
+                <ul className="navbar-nav mx-auto mb-4 mb-lg-0 gap-5">
                   <li className="nav-item">
                     <NavLink to={'/'} className="nav-link" aria-current="page" >Home</NavLink>
                   </li>
