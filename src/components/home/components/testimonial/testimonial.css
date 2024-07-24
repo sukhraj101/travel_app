@@ -37,8 +37,14 @@
 
 .testimo-assets {
     display: grid;
-    grid-template-columns: 240px 184px 87px 107px 100px 278px 65px;
-    gap: 30px;
+    /* grid-template-columns: 240px 184px 87px 107px 100px 278px 65px; */
+    /* gap: 30px; */
+    grid-template-columns: 19.34% 14.82% 7.01% 8.62% 8.06% 22.40% 5.24%;
+    gap: 2.42%;
+}
+
+.testimo-cards-wrap {
+    display: contents;
 }
 
 .testimo-head-text {
@@ -91,7 +97,7 @@
     line-height: 24px;
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 820px) {
 
     .testimo-heading {
         font-size: 30px;
@@ -99,6 +105,26 @@
 
     .testimo-assets {
         display: block;
+    }
+    .testimonial:after {
+        background-position: 0% 100%;
+    }
+    .testimo-cards-wrap {
+        gap: 20px;
+        display: flex;
+        align-items: flex-start;
+        overflow: auto;
+        width: calc(100% + 24px);
+        padding-right: 24px;
+    }
+    .testimo-cards-wrap::-webkit-scrollbar {
+        display: none;
+    }
+
+    .testimo-cards-wrap .testimo-card {
+        width: 300px;
+        max-width: 95%;
+        flex: 1 0 300px;
     }
 
     .testimo-card1,
