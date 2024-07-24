@@ -3,6 +3,7 @@ import AdminHeader from '../../components/common/admin/header';
 import AdminSidebar from '../../components/common/admin/sidebar';
 import { useEffect, useState } from 'react';
 import { postRequest } from '../../service';
+import "./../../../public/admin/assets/css/style.min.css"
 
 const AdminLayout = () => { 
   const [isLogin,setIsLogin] = useState(false);
