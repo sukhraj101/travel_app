@@ -1,0 +1,173 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    margin: 0 auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    position: relative;
+    background-color: #f7f7f7;
+    isolation: isolate;
+}
+body:after {
+    content: '';
+    position: absolute;
+    opacity: 0.2;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/fs/48b8ce17428775.562b9e1ff360e.jpg');
+}
+.main {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    width: 1460px;
+    max-width: 100%;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.main-assets {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 100%;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+}
+.main-assets > * {
+    flex: 1 1 100%;
+    align-self: center;
+}
+.main-text {
+    padding-top: 6rem;
+    margin-bottom: 2rem;
+}
+.main-text h2 {
+    text-align: center;
+    font-size: 2.4rem;
+    margin: 0 0 12px 0;
+    line-height: 1;
+}
+.main-text p {
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin: 0;
+}
+header.header-onsetup { 
+    flex-direction: column;
+    display: flex; 
+    padding: 2rem 1rem;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+header.header-onsetup .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+header.header-onsetup .header-logo span {
+    color: #000000;
+    font-weight: 500;
+}
+header.header-onsetup p {
+    margin: 0;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    background: #efefef;
+    padding: 0.3rem 1.2rem;
+    border-radius: 15px;
+    box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.5);
+}
+header.header-onsetup p a {
+    text-decoration: underline;
+    color: inherit;
+    display: inline-block;
+    margin-inline: 5px;
+    font-weight: 600;
+    color: #0a5fdf;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+footer {
+    padding: 0.25rem 1rem;
+}
+footer p {
+    color: #757575;
+    font-size: 12px;
+    font-style: italic;
+    text-align: center;
+    font-weight: 400;
+}
+@media (min-width: 600px) {
+    .main-assets { display: flex; }
+    .main-text { padding-top: 0px; }
+    .main-text h2 { font-size: 4rem; text-align: left; }
+    .main-text p { font-size: 1.4rem; text-align: left; }
+    header.header-onsetup { flex-direction: row; }
+}
+@media (min-width: 1080px) {
+    .main-text h2 { font-size: 6rem; }
+}
+
+.yellow-cube {
+    --main-color: #de0063;
+    --stroke-color: #ad004e;
+    --light-color: #fa0070;
+    --dark-color: #c7005a;
+}
+.yellow-cube {
+    --main-color: #ffbf50;
+    --stroke-color: #93630e;
+    --light-color: #e3a434;
+    --dark-color: #b37b1b;
+}
+.stroke {
+    fill: none;
+    stroke: var(--stroke-color);
+    stroke-miterlimit: 10;
+    stroke-width: 0.6;
+}
+.face-up-down {
+    fill: var(--main-color);
+    opacity: 0.9;
+}
+.mup {
+    animation: 2s moveUp alternate infinite paused;
+}
+.mleft {
+    animation: 2s moveLeft alternate infinite paused;
+}
+.mright {
+    animation: 2s moveRight alternate infinite paused;
+}
+.compliance-svg {
+    max-width: 480px;
+    margin: 0 auto;
+}
+.compliance-svg * { animation-play-state: running; }
+
+@keyframes moveUp {
+    to {
+        transform: translateY(-35px);
+    }
+}
+@keyframes moveRight {
+    to {
+        transform: translateX(50px);
+    }
+}
+@keyframes moveLeft {
+    to {
+        transform: translateX(-50px);
+    }
+}
+
+@keyframes blink {50% { color: transparent }}
+.loader__dot { animation: 1s blink infinite }
+.loader__dot:nth-child(2) { animation-delay: 250ms }
+.loader__dot:nth-child(3) { animation-delay: 500ms }
+.loader__dot { font-size: 3rem; }
