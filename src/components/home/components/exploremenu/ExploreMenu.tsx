@@ -22,16 +22,16 @@ const ExploreMenu = () => {
                             <div id="exploreSlider" className="carousel slide carousel-dark" >
                                 <div className="carousel-inner">
                                     <div className="carousel-item active">
-                                        <div className="row align-items-center">
-                                            <div className="col-md-3 mt-5">
-                                                <img src={`${url}/images/home/explore1.png`} className='w-100' alt="" />
+                                        <div className="row">
+                                            <div className="col-md-3 ">
+                                                <img src={`${url}/images/home/explore1.png`} className='w-100 h-100' alt="" />
                                             </div>
-                                            <div className="col-md-9 ">
+                                            <div className="col-md-9">
                                                 <div className="row ">
-                                                    <div className="col-md-6 mt-5 ">
+                                                    <div className="col-md-6">
                                                         <img src={`${url}/images/home/explore2.png`} className='w-100' alt="" />
                                                     </div>
-                                                    <div className="col-md-6  mt-5 ">
+                                                    <div className="col-md-6  ">
                                                         <img src={`${url}/images/home/explore3.png`} className='w-100' alt="" />
                                                     </div>
                                                 </div>
@@ -47,24 +47,24 @@ const ExploreMenu = () => {
                                         </div>
                                     </div>
                                     <div className="carousel-item">
-                                        <div className="row align-items-center">
-                                            <div className="col-md-3">
-                                                <img src={`${url}/images/home/explore1.png`} className='w-100' alt="" />
+                                        <div className="row">
+                                            <div className="col-md-3 ">
+                                                <img src={`${url}/images/home/explore1.png`} className='w-100 h-100' alt="" />
                                             </div>
                                             <div className="col-md-9">
-                                                <div className="row mb-6">
-                                                    <div className="col-md-6 px-5">
+                                                <div className="row ">
+                                                    <div className="col-md-6">
                                                         <img src={`${url}/images/home/explore2.png`} className='w-100' alt="" />
                                                     </div>
-                                                    <div className="col-md-6 px-5">
+                                                    <div className="col-md-6  ">
                                                         <img src={`${url}/images/home/explore3.png`} className='w-100' alt="" />
                                                     </div>
                                                 </div>
                                                 <div className="row">
-                                                    <div className="col-md-6 px-5">
+                                                    <div className="col-md-6 mt-5">
                                                         <img src={`${url}/images/home/explore4.png`} className='w-100' alt="" />
                                                     </div>
-                                                    <div className="col-md-6 px-5">
+                                                    <div className="col-md-6 mt-5">
                                                         <img src={`${url}/images/home/explore5.png`} className='w-100' alt="" />
                                                     </div>
                                                 </div>
@@ -72,24 +72,24 @@ const ExploreMenu = () => {
                                         </div>
                                     </div>
                                     <div className="carousel-item">
-                                        <div className="row align-items-center">
-                                            <div className="col-md-3">
-                                                <img src={`${url}/images/home/explore1.png`} className='w-100' alt="" />
+                                        <div className="row">
+                                            <div className="col-md-3 ">
+                                                <img src={`${url}/images/home/explore1.png`} className='w-100 h-100' alt="" />
                                             </div>
                                             <div className="col-md-9">
-                                                <div className="row mb-6">
-                                                    <div className="col-md-6 px-5">
+                                                <div className="row ">
+                                                    <div className="col-md-6">
                                                         <img src={`${url}/images/home/explore2.png`} className='w-100' alt="" />
                                                     </div>
-                                                    <div className="col-md-6 px-5">
+                                                    <div className="col-md-6  ">
                                                         <img src={`${url}/images/home/explore3.png`} className='w-100' alt="" />
                                                     </div>
                                                 </div>
                                                 <div className="row">
-                                                    <div className="col-md-6 px-5">
+                                                    <div className="col-md-6 mt-5">
                                                         <img src={`${url}/images/home/explore4.png`} className='w-100' alt="" />
                                                     </div>
-                                                    <div className="col-md-6 px-5">
+                                                    <div className="col-md-6 mt-5">
                                                         <img src={`${url}/images/home/explore5.png`} className='w-100' alt="" />
                                                     </div>
                                                 </div>

@@ -119,6 +119,12 @@
     .tracking_schedule_accor_right{
         width: 100%;
     }
+    .tracking_review_card_box{
+        padding: 15px !important;
+    }
+    .tracking_rating_txt{
+        font-size: 14px;
+    }
 }
 
 @media screen and (max-width:430px) {

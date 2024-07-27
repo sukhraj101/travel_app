@@ -114,27 +114,40 @@ input.home-filter-cityName[type="date"]::-webkit-calendar-picker-indicator {
     .home-filters-items {
         display: flex;
         flex-direction: column;
+        row-gap: 14px;
     }
 
     .vh-mob {
-        height: 70vh !important;
+        height: 66vh !important;
     }
 
     .hero-text {
-        font-size: 33px;
+        font-size: 25px;
+        line-height: 1;
+        margin-bottom: 6px;
     }
+
+    .home-search-wrpr{padding: 15px 12px 15px 25px;}
+  
+
+    .search-heading {
+        font-family: 'Gilroy';
+        font-size: 16px;}
 
     .hero-subtext {
         font-family: 'Gilroy';
-        font-size: 16px;
+        font-size: 14px;
+        line-height: 22px;
     }
 
     .offers-heading {
         font-size: 20px !important;
+        line-height: 1 !important;
     }
 
     .offers-heading span {
-        font-size: 30px !important;
+        font-size: 27px !important;
+        line-height: 35px;
     }
 
     .offers-content {
@@ -143,6 +156,14 @@ input.home-filter-cityName[type="date"]::-webkit-calendar-picker-indicator {
     }
 
     .explore-heading {
-font-size: 34px;}
+font-size: 32px;}
 
+.home-filter-cityName {
+    font-size: 12px;}
+}
+
+@media screen and (max-width:430px) {
+    .hero-subtext{
+        margin-bottom: 15px !important;
+    }
 }
