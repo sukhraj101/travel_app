@@ -10,24 +10,24 @@ const App = () => {
   const [client,setClient] = useState({});
   const [isDomain,setIsDomain] = useState(false);
   const [loading,setLoading] = useState(true);
-    useEffect(() => {
-        const fetchWebData = async () => {
-          try {
-            const res = await postRequest('v1/check-domain', {});
-            if(res?.success){
-              setClient(res.data); 
-            }
-            setIsDomain(res.success);
-            setLoading(false);
-          } catch (error) {
-            console.error('Error fetching web data:', error);
-          }
-        }; 
-        fetchWebData();
-    },[]);  
+    // useEffect(() => {
+    //     const fetchWebData = async () => {
+    //       try {
+    //         const res = await postRequest('v1/check-domain', {});
+    //         if(res?.success){
+    //           setClient(res.data); 
+    //         }
+    //         setIsDomain(res.success);
+    //         setLoading(false);
+    //       } catch (error) {
+    //         console.error('Error fetching web data:', error);
+    //       }
+    //     }; 
+    //     fetchWebData();
+    // },[]);  
   return (
      <>
-         {
+         {/* {
          loading ? <div className='loading'>Loading...</div> : (
             isDomain ?  (
                 client?.status === 1 ? (
@@ -39,7 +39,8 @@ const App = () => {
               <NotFound />
             ) 
          )
-         } 
+         }  */}
+         <RouterProvider router={router} />
      </>
   )
 }
