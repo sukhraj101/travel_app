@@ -1,3 +1,6 @@
+.tracking_details {
+    background-color: #FAFAFB;
+}
 .tracking_schedule_acco_heading button::after{
     display: none;
 }

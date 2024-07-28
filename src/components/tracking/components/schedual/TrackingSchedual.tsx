@@ -6,7 +6,7 @@ const TrackingSchedual = () => {
             <h2 className="fs-3 fw-bold mb-6">Scheduling</h2>
             <div className="row schedule-wrpr">
                 <div className="col-md-6 tracking_schedule_left_content">
-                    <div className="card border-0">
+                    <div className="card border-0 rounded-4 shadow-md">
                         <div className="card-body rounded-4 shechdule_vetical_line position-relative tracking_schedule_left_card">
                             <div className="d-flex mb-6 gap-3 tracking_schedual_circle_box">
                                 <div className="col-md-1 vertical_line tracking_schedual_circle">
@@ -109,8 +109,8 @@ const TrackingSchedual = () => {
                     </div>  
                 </div>
                 <div className="col-md-6 tracking_schedule_right_map">
-                    <div className="schedule_tracking_map card border-0">
-                        <div className="card-body rounded-4 p-0 ">
+                    <div className="schedule_tracking_map card border-0 rounded-4">
+                        <div className="card-body p-0">
                             <iframe
                                 className="rounded-4"
                                 width="100%"
