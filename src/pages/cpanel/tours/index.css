@@ -7,21 +7,96 @@
 .page-wrapper .card-body {
     box-shadow: none;
 }
-.card-body.right-aside {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 0;
-}
 .right-aside-btns {
     position: sticky;
     bottom: 0px;
     top: auto;
-    margin-top: auto !important;
     z-index: 1;
     background: #ffffff;
     padding: 12px;
     margin-bottom: -8px;
     box-shadow: 0px -2px 4px 0px #0000001F;
     width: calc(100% + 2.5rem);
-    margin-left: -1.25rem;
+    margin: 2rem 0 0 -1.25rem;
+}
+.accordion-collapse {
+    border: solid rgba(0, 0, 0, 0.125);
+    border-width: 0 1px 1px;
+}
+.accordion-button,
+.accordion-button:focus {
+    border: solid rgb(107 107 107 / 13%);
+    border-width: 1px 1px 0px;
+}
+.tour-banner {
+    position: relative;
+}
+.tour-gallery {
+    margin: 0 0 1rem 0;
+    gap: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.tour-image {
+    position: relative;
+    padding: 0;
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    overflow: hidden;
+    user-select: none;
+}
+.remove-image {
+    cursor: pointer;
+}
+.remove-image:after,
+.remove-image::after {
+    content: '✖';
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #a90000;
+    background: #ffc9c9;
+    width: 16px;
+    height: 16px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.tour-image img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 0.95;
+    object-fit: cover;
+    object-position: center;
+}
+.tour-banner {
+    text-align: center;
+}
+.tour-banner img {
+    max-width: 100%;
+}
+.tags-wrap {
+    height: 150px;
+    overflow: auto;
+    border: 1px solid #f1f1f1;
+    padding: 6px;
+}
+.tags-wrap .form-check {
+    gap: 6px;
+    display: flex;
+    align-items: center;
+}
+.form-check label {
+    cursor: pointer;
+    user-select: none;
+}
+.tag-addnew {
+    color: #28b779;
+    font-weight: 600;
+    margin: 6px 0;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 5px;
 }

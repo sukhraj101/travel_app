@@ -23,7 +23,7 @@ const AdminMenu = ({ menuList }: { menuList: MenuList }) => {
         <>
             <li className="sidebar-item" >
                 <NavLink className={`sidebar-link waves-effect waves-dark sidebar-link ${isChildren && 'has-arrow'}`}
-                    to={`${isChildren ? '#!' : `/admin${menuList.link}`}`}
+                    to={`${isChildren ? '#!' : `/cpanel/${menuList.link}`}`}
                     aria-expanded="false"
                     onClick={()=>{
                         isChildren && handleDropDown(menuList.id)

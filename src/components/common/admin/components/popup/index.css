@@ -1,0 +1,50 @@
+.modal.show {
+    background: #3b3b3b9c;
+    backdrop-filter: blur(2px);
+}
+.modal-body {
+    padding: 1rem;
+    margin: 1rem 0;
+}
+.modal-body *:last-child {
+    margin-bottom: 0;
+}
+.close:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+.modal-header .close {
+    padding: 1rem;
+    margin: -1rem -1rem -1rem auto;
+}
+button.close {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    -webkit-appearance: none;
+}
+.close:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+.close {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+}
+.btn-align-right {
+    float: right;
+    display: block;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+.btn-align-right:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.input-group-text {
+    cursor: pointer;
+}

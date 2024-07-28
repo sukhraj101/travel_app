@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
-import { useForm } from "react-hook-form";
 import { loginFun } from "../service";
 interface LoginFormInputs {
   email: string;

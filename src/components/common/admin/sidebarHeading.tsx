@@ -4,13 +4,13 @@ const sidebarHeadings = [
         id:1,
         heading:'Dashboard',
         icon:<i className="mdi mdi-view-dashboard"></i>,
-        link:'/dashboard',
+        link:'/',
     },
     {
         id:2,
-        heading:'Charts',
+        heading:'Vendors',
         icon:<i className="mdi mdi-chart-bar"></i>,
-        link:'/chart'
+        link:'vendor/listing'
     },
     {
         id:3,

@@ -19,17 +19,7 @@ const postRequest = async (url: string, params:object, file: number = 0) => {
     });
     return response.data;
 };
-const postRequest2 = async (url: string, params:object, file: number = 0) => {
-  if (file === 1) {
-    headers["Content-Type"] = "multipart/form-data";
-  } else {
-    headers["Content-Type"] = "application/json";
-  }
-  const response: AxiosResponse = await axios.post(`${environment.base_url2}${url}`, params, {
-    headers: headers,
-  });
-  return response.data;
-};
+ 
 
  const loginFun = async (loginDetails:unknown) => {
   const response = await axios.post(
@@ -66,8 +56,14 @@ function getToken(){
   }
 }
 
+ const getRequest = async (url: string, params = {}) => {
+  headers["Content-Type"] = "application/json";
+  const response = await axios.get(`${baseURL}/${url}`, params);
+  return response.data;
+};
+
 export {
     postRequest,
     loginFun,
-    postRequest2
+    getRequest
 };

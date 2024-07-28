@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { postRequest } from './service';
 import NotFound from './pages/notfound/notfound';
 import OnSetupLoad from './components/common/onSetupLoad'; 
+import Loader from './components/common/admin/components/loader';
 
 const App = () => {
   const [client,setClient] = useState({});
@@ -28,7 +29,7 @@ const App = () => {
   return (
      <>
          {
-         loading ? <div className='loading'>Loading...</div> : (
+         loading ? <Loader /> : (
             isDomain ?  (
                 client?.status === 1 ? (
                   <RouterProvider router={router} />

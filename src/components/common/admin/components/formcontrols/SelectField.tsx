@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface Option {
-  value: string;
+  value: string | number;
   label: string;
 }
 
@@ -12,8 +12,9 @@ interface OptgroupOption {
 
 interface SelectFieldProps {
   label: string;
+  inputId: string;
   options: (OptgroupOption | Option)[];
-  selectedValue: string;
+  selectedValue: string | number;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   containerClassName?: string;
   labelClassName?: string;
@@ -23,6 +24,7 @@ interface SelectFieldProps {
 
 const SelectField: React.FC<SelectFieldProps> = ({
   label,
+  inputId,
   options,
   selectedValue,
   onChange,
@@ -36,6 +38,7 @@ const SelectField: React.FC<SelectFieldProps> = ({
       <label className={labelClassName}>{label}</label>
       <div className="col-md-9">
         <select
+          id={inputId}
           className={selectClassName}
           value={selectedValue}
           onChange={onChange}

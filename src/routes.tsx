@@ -9,6 +9,9 @@ import Dashboard from './pages/cpanel';
 import Login from './pages/home/login';
 import NotFound from './pages/notfound/notfound';
 import CreateTour from './pages/cpanel/tours';
+import VendorListing from './pages/cpanel/vendors';
+import CreateVendor from './pages/cpanel/vendors/create';
+import VendorDetail from './pages/cpanel/vendors/details';
 
 
 const router = createBrowserRouter([
@@ -49,7 +52,19 @@ const router = createBrowserRouter([
         {
           path:'/cpanel/tours/create', 
           element:<CreateTour />
-        }       
+        },
+        {
+          path:'/cpanel/vendor/listing', 
+          element:<VendorListing />
+        },
+        {
+          path:'/cpanel/vendor/create', 
+          element:<CreateVendor />
+        },
+        {
+          path:'/cpanel/vendor/:slug/detail', 
+          element:<VendorDetail />
+        }   
       ]
     }, 
     {

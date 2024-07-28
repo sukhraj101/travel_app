@@ -1,34 +1,44 @@
-import React from 'react';
+import React, { ReactNode, forwardRef, ForwardedRef } from 'react';
+import { UseFormRegister, FieldValues, RegisterOptions, Path } from 'react-hook-form';
 
-interface TextfieldProps {
+interface TextfieldProps<T extends FieldValues> {
   label: ReactNode;
-  inputType: string;
+  inputType: 'text' | 'email' | 'password' | 'number' | 'textarea';
   inputId: string;
   placeholder?: string;
-  value?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  value?: string | number;
+  // onChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   labelClassName?: string;
   inputClassName?: string;
   containerClassName?: string;
   rows?: number;
   autoComplete?: 'on' | 'off';
   disabled?: boolean;
+  error?: string;
+  register?: UseFormRegister<T>;
+  name?: Path<T>;
 }
 
-const Textfield: React.FC<TextfieldProps> = ({
-  label,
-  inputType,
-  inputId,
-  placeholder,
-  value,
-  onChange,
-  labelClassName = "col-sm-3 control-label col-form-label",
-  inputClassName = "form-control",
-  containerClassName = "form-group row",
-  rows = 4,
-  autoComplete = 'on',
-  disabled = false,
-}) => {
+const Textfield = <T extends FieldValues>(
+  {
+    label,
+    inputType,
+    inputId,
+    placeholder,
+    value,
+    // onChange,
+    labelClassName = "col-sm-3 control-label col-form-label",
+    inputClassName = "form-control",
+    containerClassName = "form-group row",
+    rows = 4,
+    autoComplete = 'on',
+    disabled = false,
+    error,
+    register,
+    name
+  }: TextfieldProps<T>,
+  ref: ForwardedRef<HTMLInputElement | HTMLTextAreaElement>
+) => {
   return (
     <div className={containerClassName}>
       <label htmlFor={inputId} className={labelClassName}>
@@ -44,11 +54,13 @@ const Textfield: React.FC<TextfieldProps> = ({
             id={inputId}
             className={inputClassName}
             placeholder={placeholder}
-            value={value}
+            value={value as string} // `value` should be string for textarea
             rows={rows}
             autoComplete={autoComplete}
-            onChange={onChange}
+            // onChange={onChange}
             disabled={disabled}
+            {...(register && name ? register(name, { required: 'Business Name is required' } as RegisterOptions<T>) : {})}
+            ref={ref as ForwardedRef<HTMLTextAreaElement>}
           />
         ) : (
           <input
@@ -56,15 +68,21 @@ const Textfield: React.FC<TextfieldProps> = ({
             className={inputClassName}
             id={inputId}
             placeholder={placeholder}
-            value={value}
+            value={value as string} // `value` should be string for input
             autoComplete={autoComplete}
-            onChange={onChange}
+            // onChange={onChange}
             disabled={disabled}
+            {...(register && name ? register(name, { required: 'Business Name is required' } as RegisterOptions<T>) : {})}
+            ref={ref as ForwardedRef<HTMLInputElement>}
           />
         )}
+        {error && <div className="invalid-feedback">{error}</div>}
       </div>
     </div>
   );
-}
+};
 
-export default Textfield;
+const ForwardedTextfield = forwardRef(Textfield);
+ForwardedTextfield.displayName = 'Textfield';
+
+export default ForwardedTextfield;
