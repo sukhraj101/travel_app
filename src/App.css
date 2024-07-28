@@ -128,7 +128,7 @@
 
 @media (min-width: 1300px) {
   .container {
-      max-width:1350px; /* Custom max-width for extra extra large screens */
+      max-width:1300px; /* Custom max-width for extra extra large screens */
   }
 }
 @media (min-width: 1600px) {
@@ -140,11 +140,12 @@
 /* bootstrap container */
 
 .search_icon{
-  position: absolute;
   top: 50%;
-  right: 5%;
+  right: 3.5%;
+  position: absolute;
   transform: translateY(-50%);
   cursor: pointer;
+  max-width: 22px;
 }
 
 body:has(.schedule-wrpr) .navbar {

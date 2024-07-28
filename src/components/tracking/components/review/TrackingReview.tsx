@@ -93,7 +93,7 @@ const TrackingReview = () => {
                                 <p className="fw-semibold m-0 tracking_rating_txt">50,121 reviews</p>
                                 <div className="tracking_rating_search_box rounded-4 position-relative">
                                     <input type="text" placeholder="Search for destination or activities..." className="tracking_rating_search_input fs-sm" />
-                                    <img src={`${url}/images/common/search_icon.jpg`} alt="search_icon" className="search_icon" />
+                                    <img src={`${url}/images/common/search_icon.png`} alt="search_icon" className="search_icon" />
                                 </div>
                             </div>
                             <div className="tracking_rating_user_content">

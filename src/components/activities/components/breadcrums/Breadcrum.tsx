@@ -1,10 +1,11 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
+import "./breadcrums.css"
 
 const Breadcrum = () => {
   let navigate = useNavigate()
   return (
-    <nav aria-label="Breadcrumb" className="my-4">
+    <nav aria-label="Breadcrumb" className="mt-4">
         <ol className="breadcrumb">
             <li>
               <button className="go-back-btn" onClick={() => (navigate(-1))}>

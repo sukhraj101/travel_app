@@ -4,7 +4,7 @@ const url = import.meta.env.VITE_PUBLIC_URL;
 const VideoSec = () => {
   return (
     <>
-        <div className="container-fluid video-sec-bg my-20 py-20">
+        <div className="container-fluid video-sec-bg my-20">
             <div className="container">
                 <div className="row py-10">
                     <div className="col-md-7 text-center mx-auto">

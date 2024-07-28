@@ -1,5 +1,5 @@
 .navbar-brand {
-    max-width: 192px;
+    max-width: 140px;
 }
 
 .navbar-brand img {
@@ -123,13 +123,13 @@
     }
 
     .navbar-brand {
-        max-width: 168px;
+        max-width: 100px;
     }
 }
 
     @media only screen and (max-width: 440px) {
         .navbar-brand {
-            max-width: 105px;
+            max-width: 80px;
         }
 
         .btn-header{padding:3px 18px;font-size: 13px;}
@@ -155,7 +155,7 @@
     
     @media only screen and (max-width: 342px) {
         .navbar-brand {
-            max-width: 95px;
+            max-width: 75px;
         }
 
         .btn-header{padding:3px 18px;font-size: 13px;}
@@ -180,7 +180,7 @@
 
     @media only screen and (min-width: 280px)  and (max-width: 302px) {
         .navbar-brand {
-            max-width: 80px;
+            max-width: 60px;
         }
 
         .navbar-toggler{  padding: 0px 3px;}

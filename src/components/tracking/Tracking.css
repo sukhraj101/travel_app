@@ -80,7 +80,7 @@
     content: '';
 }
 .tracking_navlink{
-    box-shadow: 0px 2px 4px 0px #0000001F;
+    box-shadow: 8px 3px 7px -4px #0000001F;
 }
 .tracking_menu_link.active{
     border-bottom: 4px solid #FBA919;
