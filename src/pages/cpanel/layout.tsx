@@ -3,7 +3,11 @@ import AdminHeader from '../../components/common/admin/header';
 import AdminSidebar from '../../components/common/admin/sidebar';
 import { useEffect, useState } from 'react';
 import { postRequest } from '../../service';
-import "./../../../public/admin/assets/css/style.min.css"
+// import "./../../../public/admin/assets/css/style.min.css"
+// const styleCSS = import.meta.env.VITE_PUBLIC_URL;
+
+
+
 
 const AdminLayout = () => { 
   const [isLogin,setIsLogin] = useState(false);
@@ -30,7 +34,12 @@ const AdminLayout = () => {
 
   return (
     <>
-    
+      <link
+        rel="stylesheet"
+        href={`${import.meta.env.VITE_PUBLIC_URL}/admin/assets/css/style.min.css`}
+      />
+      
+
       <div 
         id="main-wrapper"
         data-layout="vertical"

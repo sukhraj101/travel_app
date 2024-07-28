@@ -38,7 +38,7 @@ const Hero = () => {
                                             <div className="home-filter-search-icon me-3">
                                                 <img src={`${url}/images/home/filter-icon2.png`} alt="filter-icon" />
                                             </div>
-                                            <div>
+                                            <div >
                                                 <label htmlFor="cityName" className='home-filters-items-lable fw-bold'>
                                                     To
                                                 </label>

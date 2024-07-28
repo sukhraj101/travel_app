@@ -7,7 +7,7 @@ import './activities.css'
 const Activities = () => {
   return (
     <>
-        <div className="container-fluid">
+        <div className="container-fluid activity_tour_details">
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">

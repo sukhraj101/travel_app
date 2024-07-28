@@ -3,6 +3,7 @@
     padding-block: 120px 80px;
     background: linear-gradient(93.34deg, #2D3C78 17.95%, #5161A2 95.54%);
     isolation: isolate;
+    overflow: clip;
 }
 
 .testimonial:after {
