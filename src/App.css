@@ -79,6 +79,17 @@
   font-style: normal;
 }
 
+.go-back-btn {
+  border: 0;
+  width: 24px;
+  opacity: 0.6;
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  transform: rotate(180deg);
+  margin-right: 12px;
+}
+
 
 
 /* bootstrap container */
