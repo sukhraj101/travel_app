@@ -1,5 +1,9 @@
+.activity_tour_details {
+    background-color: #FAFAFB;
+}
 .card-body {
     box-shadow: 0px 2px 12px 0px #0000001F;
+    background-color: #FFFFFF;
 }
 
 .tour_details_icons_list {

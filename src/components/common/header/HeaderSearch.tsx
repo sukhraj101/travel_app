@@ -6,7 +6,7 @@ const HeaderSearch = () => {
             <div className="header_search_input_box rounded-4 position-relative">
                 <input type="text" placeholder="Search for destination or activities..." aria-label="Search"
                 className="header_search_input fs-sm fw-medium" />
-                <img src={`${url}/images/common/search_icon.jpg`} alt="search_icon" className="search_icon" />
+                <img src={`${url}/images/common/search_icon.png`} alt="search_icon" className="search_icon" />
             </div>
         </form>
     </div>

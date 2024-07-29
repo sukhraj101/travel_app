@@ -1,5 +1,5 @@
 .navbar-brand {
-    max-width: 192px;
+    max-width: 140px;
 }
 
 .navbar-brand img {
@@ -123,14 +123,14 @@
     }
 
     .navbar-brand {
-        max-width: 168px;
+        max-width: 100px;
     }
 }
 
-@media only screen and (max-width: 440px) {
-    .navbar-brand {
-        max-width: 105px;
-    }
+    @media only screen and (max-width: 440px) {
+        .navbar-brand {
+            max-width: 80px;
+        }
 
     .btn-header {
         padding: 3px 18px;
@@ -148,6 +148,7 @@
     }
 
 
+<<<<<<< HEAD
     .navbar-toggler-icon {
         display: inline-block;
         width: 1em;
@@ -158,6 +159,13 @@
         line-height: 1;
         font-size: 14px;
     }
+=======
+    
+    @media only screen and (max-width: 342px) {
+        .navbar-brand {
+            max-width: 75px;
+        }
+>>>>>>> 91b84be759ace6e2c143dc63d0d4a52658980090
 
 }
 @media only screen and (max-width: 342px) {
@@ -177,12 +185,19 @@
 
     }
 
+<<<<<<< HEAD
     .navbar-toggler-icon {
         display: inline-block;
         width: 1em;
         height: 1em;
         background-size: 64%;
     }
+=======
+    @media only screen and (min-width: 280px)  and (max-width: 302px) {
+        .navbar-brand {
+            max-width: 60px;
+        }
+>>>>>>> 91b84be759ace6e2c143dc63d0d4a52658980090
 
     .navbar-toggler {
         padding: 2px 6px;

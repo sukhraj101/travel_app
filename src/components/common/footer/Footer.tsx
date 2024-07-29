@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="row">
           <div className="col">
             <div className="footer-text">
-              <span>Powered by:</span> <img src={`${fLogo}/images/common/fivvia.png`} alt="" />
+              <span>Powered by:</span><img src={`${fLogo}/images/common/fivvia.png`} alt="" />
             </div>
           </div>
         </div>

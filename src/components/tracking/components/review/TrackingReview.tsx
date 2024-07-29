@@ -87,13 +87,13 @@ const TrackingReview = () => {
                     </div>
                 </div>
                 <div className="col-md-7 px-0 px-md-10">
-                    <div className="card border-0">
+                    <div className="card border-0 shadow-md rounded-4">
                         <div className="card-body p-8 rounded-4 tracking_review_card_box">
                             <div className="d-flex align-items-center justify-content-between mb-10">
                                 <p className="fw-semibold m-0 tracking_rating_txt ">50,121 reviews</p>
                                 <div className="tracking_rating_search_box rounded-4 position-relative">
                                     <input type="text" placeholder="Search for destination or activities..." className="tracking_rating_search_input fs-sm" />
-                                    <img src={`${url}/images/common/search_icon.jpg`} alt="search_icon" className="search_icon" />
+                                    <img src={`${url}/images/common/search_icon.png`} alt="search_icon" className="search_icon" />
                                 </div>
                             </div>
                             <div className="tracking_rating_user_content">
