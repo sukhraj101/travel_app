@@ -75,18 +75,33 @@
 .tracking_rating_user_content + .tracking_rating_user_content{
     margin-top: 28px;
 }
-.vertical_line::after{
-    position: absolute;
-    content: '';
-}
 .tracking_navlink{
     box-shadow: 0px 2px 4px 0px #0000001F;
 }
 .tracking_menu_link.active{
     border-bottom: 4px solid #FBA919;
 }
+.vertical_line_dots{
+    position: relative;
+    z-index: 1;
+}
+.vertical_line_dots::after{
+    position: absolute;
+    content: '';
+    height: 100%;
+    border: 1px dashed black;
+    top: 0;
+    left: 3.5%;
+    z-index: 111;
+    z-index: -1;
+}
 
 
+@media screen and (max-width:1580px) {
+    .vertical_line_dots::after{
+        left: 4%;
+    }
+}
 @media screen and (max-width:1440px) {
     .tracking_schedual_track_heading{
         font-size: 14px;
@@ -101,6 +116,9 @@
     }
     .tracking_schedual_accor_btn{
         font-size: 14px;
+    }
+    .vertical_line_dots::after{
+        left: 3.5%;
     }
 }
 @media screen and (max-width:1024px) {
@@ -126,7 +144,6 @@
         font-size: 14px;
     }
 }
-
 @media screen and (max-width:430px) {
     .tracking_schedule_left_card{
         padding: 15px;
@@ -135,5 +152,31 @@
     .tracking_schedual_accor_btn,
     .tracking_schedule_accor_hour{
         font-size:12px !important;
+    }
+    .tracking_menu_link,
+    .accodion_collapsing_desc{
+        font-size: 12px !important;
+    }
+    .tracking_section_heading{
+        font-size: 16px !important;
+        margin-bottom: 10px !important;
+    }
+    .vertical_line_dots::after{
+        left: 5.5%;
+    }
+}
+@media screen and (max-width:393px) {
+    .vertical_line_dots::after{
+        left: 6%;
+    }
+}
+@media screen and (max-width:360px) {
+    .vertical_line_dots::after{
+        left: 6.6%;
+    }
+}
+@media screen and (max-width:320px) {
+    .vertical_line_dots::after{
+        left: 7%;
     }
 }

@@ -73,10 +73,11 @@ const Header = () => {
             <span className="navbar-toggler-icon"></span></button>
           <div className="navbar-collapse align-items-start pt-4 collapse" id="navbarTogglerDemo01" >
             <ul className="navbar-nav mx-auto mb-4 mb-lg-0 gap-5">
-              <li className="nav-item"><a aria-current="page" className="nav-link active" href="/">Home</a></li>
-              <li className="nav-item"><a className="nav-link" href="#">Menu</a></li>
-              <li className="nav-item"><a className="nav-link" href="/activities" >Activities</a></li><li className="nav-item"><a className="nav-link" href="#">Cities</a></li>
-              <li className="nav-item"><a className="nav-link" href="#">Social Media</a></li></ul></div>
+              <li className="nav-item"><NavLink aria-current="page" className="nav-link mobile_nav_link" to="/">Home</NavLink></li>
+              <li className="nav-item"><NavLink className="nav-link mobile_nav_link" to="">Menu</NavLink></li>
+              <li className="nav-item"><NavLink className="nav-link mobile_nav_link" to="/activities" >Activities</NavLink></li>
+              <li className="nav-item"><NavLink className="nav-link mobile_nav_link" to="">Cities</NavLink></li>
+              <li className="nav-item"><NavLink className="nav-link mobile_nav_link" to="">Social Media</NavLink></li></ul></div>
         </div>
       </nav>
 

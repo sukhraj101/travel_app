@@ -127,71 +127,90 @@
     }
 }
 
-    @media only screen and (max-width: 440px) {
-        .navbar-brand {
-            max-width: 105px;
-        }
+@media only screen and (max-width: 440px) {
+    .navbar-brand {
+        max-width: 105px;
+    }
 
-        .btn-header{padding:3px 18px;font-size: 13px;}
+    .btn-header {
+        padding: 3px 18px;
+        font-size: 13px;
+    }
 
-        .header_icon {
-            width: 16px;
-            height: 16px;
-            display: flex;
-        }
+    .header_icon {
+        width: 16px;
+        height: 16px;
+        display: flex;
+    }
 
-        .navbar-toggler{  padding: 4px 8px;}
-
-        
-        .navbar-toggler-icon {
-            display: inline-block;
-            width: 1em;
-            height: 1em;
-            background-size: 84%;}
-
+    .navbar-toggler {
+        padding: 4px 8px;
     }
 
 
-    
-    @media only screen and (max-width: 342px) {
-        .navbar-brand {
-            max-width: 95px;
-        }
+    .navbar-toggler-icon {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        background-size: 84%;
+    }
+    .mobile_nav_link{
+        line-height: 1;
+        font-size: 14px;
+    }
 
-        .btn-header{padding:3px 18px;font-size: 13px;}
+}
+@media only screen and (max-width: 342px) {
+    .navbar-brand {
+        max-width: 95px;
+    }
 
-        .header_icon {
-            width: 12px;
-            height: 12px;
-            display: flex;
-            
-        }
+    .btn-header {
+        padding: 3px 18px;
+        font-size: 13px;
+    }
 
-        .navbar-toggler-icon {
-            display: inline-block;
-            width: 1em;
-            height: 1em;
-            background-size: 64%;}
-
-            .navbar-toggler{  padding: 2px 6px;}
-        
+    .header_icon {
+        width: 12px;
+        height: 12px;
+        display: flex;
 
     }
 
-    @media only screen and (min-width: 280px)  and (max-width: 302px) {
-        .navbar-brand {
-            max-width: 80px;
-        }
+    .navbar-toggler-icon {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        background-size: 64%;
+    }
 
-        .navbar-toggler{  padding: 0px 3px;}
-        .btn-header{padding:3px 13px;font-size: 12px;}
+    .navbar-toggler {
+        padding: 2px 6px;
+    }
 
-        .header_icon {
-            width: 12px;
-            height: 12px;
-            display: flex;
-            
-        }
+
+}
+
+@media only screen and (min-width: 280px) and (max-width: 302px) {
+    .navbar-brand {
+        max-width: 80px;
+    }
+
+    .navbar-toggler {
+        padding: 0px 3px;
+    }
+
+    .btn-header {
+        padding: 3px 13px;
+        font-size: 12px;
+    }
+
+    .header_icon {
+        width: 12px;
+        height: 12px;
+        display: flex;
+
+    }
 
 
 }

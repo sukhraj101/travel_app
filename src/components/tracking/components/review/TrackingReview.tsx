@@ -6,7 +6,7 @@ const TrackingReview = () => {
   return (
     <>
         <div className="tracking_review_container">
-            <h2 className="fs-3 fw-bold mb-6">Reviews</h2>
+            <h2 className="fs-3 fw-bold mb-6 tracking_section_heading">Reviews</h2>
             <div className="row">
                 <div className="col-md-5 px-10 px-md-10 mb-10 mb-md-0">
                     <div className="tracking_review_wrpr">
@@ -90,7 +90,7 @@ const TrackingReview = () => {
                     <div className="card border-0">
                         <div className="card-body p-8 rounded-4 tracking_review_card_box">
                             <div className="d-flex align-items-center justify-content-between mb-10">
-                                <p className="fw-semibold m-0 tracking_rating_txt">50,121 reviews</p>
+                                <p className="fw-semibold m-0 tracking_rating_txt ">50,121 reviews</p>
                                 <div className="tracking_rating_search_box rounded-4 position-relative">
                                     <input type="text" placeholder="Search for destination or activities..." className="tracking_rating_search_input fs-sm" />
                                     <img src={`${url}/images/common/search_icon.jpg`} alt="search_icon" className="search_icon" />
