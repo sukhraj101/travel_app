@@ -48,11 +48,11 @@ const TourPackage = () => {
               <div className="count-adlt">
                 <div className="count-adlt-list d-flex align-items-center gap-2">
                   <div className="package-counter" onClick={()=>updateCounter('adults','decrement')}>
-                    <img src={`${url}/images/details/decresing_icon.png`} alt="decreasing_icon" />
+                    <img src={`/images/details/decresing_icon.png`} alt="decreasing_icon" />
                   </div>
                   <span className="count-adlt-number fw-semibold fs-sm">{counter.adults}</span>
                   <div className="package-counter" onClick={()=>updateCounter('adults','increment')}>
-                    <img src={`${url}/images/details/incresing_icon.png`} alt="incresing_icon" />
+                    <img src={`/images/details/incresing_icon.png`} alt="incresing_icon" />
                   </div>
                 </div>
               </div>
@@ -67,11 +67,11 @@ const TourPackage = () => {
               <div className="count-adlt">
                 <div className="count-adlt-list d-flex align-items-center gap-2">
                   <div className="package-counter" onClick={()=>updateCounter('child','decrement')}>
-                    <img src={`${url}/images/details/decresing_icon.png`} alt="decreasing_icon" />
+                    <img src={`/images/details/decresing_icon.png`} alt="decreasing_icon" />
                   </div>
                   <span className="count-adlt-number fw-semibold fs-sm">{counter.child}</span>
                   <div className="package-counter" onClick={()=>updateCounter('child','increment')}>
-                    <img src={`${url}/images/details/incresing_icon.png`} alt="incresing_icon" />
+                    <img src={`/images/details/incresing_icon.png`} alt="incresing_icon" />
                   </div>
                 </div>
               </div>
@@ -88,7 +88,7 @@ const TourPackage = () => {
           <h2 className="fs-5 fw-semibold mb-2">Location</h2>
           <div className="d-flex align-items-center mb-2">
             <div className="tour-package-location-icon me-2">
-              <img src={`${url}/images/details/location_icon.png`} alt="location" />
+              <img src={`/images/details/location_icon.png`} alt="location" />
             </div>
             <p className="tour-package-location-name m-0 fs-xs fw-medium">P4C4+JF6, Obhur Al-Shamaliyah, Jeddah</p>
           </div>
@@ -107,7 +107,7 @@ const TourPackage = () => {
             <h2 className="fs-5 fw-semibold mb-3">Pickup Point</h2>
             <div className="d-flex mb-4">
               <div className="tour-package-location-icon me-2">
-                <img src={`${url}/images/details/location_icon.png`} alt="location" />
+                <img src={`/images/details/location_icon.png`} alt="location" />
               </div>
               <div>
                 <p className="tour-package-location-name mb-1 fs-xs fw-medium">Hyaat Hotel, Jeddah</p>
@@ -118,7 +118,7 @@ const TourPackage = () => {
             </div>
             <div className="d-flex">
               <div className="tour-package-location-icon me-2">
-                <img src={`${url}/images/details/location_icon.png`} alt="location" />
+                <img src={`/images/details/location_icon.png`} alt="location" />
               </div>
               <div>
                 <p className="tour-package-location-name mb-1 fs-xs fw-medium">Railway Station, Jeddah</p>

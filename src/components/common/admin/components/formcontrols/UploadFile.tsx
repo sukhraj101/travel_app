@@ -25,8 +25,7 @@ const UploadFile: React.FC<UploadFileProps> = ({
         if (e.target.files && e.target.files.length > 0) {
             formData.append('image', e.target.files[0]);
             formData.append('type', type);
-            formData.append('path', path); 
-
+            formData.append('path', path);  
             try {
                 const response = await postRequest(`v1/upload-image`, formData, 1);
                 const data = await response;

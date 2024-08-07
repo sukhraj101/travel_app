@@ -4,36 +4,33 @@ import { getRequest, postRequest } from '../../../../service';
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
-} from 'use-places-autocomplete'; 
+} from 'use-places-autocomplete';
 
- 
-interface Addresses {
-    filter(arg0: (record: { title: string; }) => boolean): unknown;
-    id: number;
-    title: string;
-    latitude: number;
-    longitude: number;
-    address: string;
-  }
-  
+interface Address {
+  id: number;
+  title: string;
+  latitude: number;
+  longitude: number;
+  address: string;
+}
 
-  interface LocationsProps {
-    handlePickup: (e: React.ChangeEvent<HTMLInputElement>, checkbox: Addresses) => void;
-    addressIds: number[];
-  }
-  
-  const Locations: React.FC<LocationsProps> = ({
-    handlePickup,
-    addressIds
-  }) => {
+interface LocationsProps {
+  handlePickup: (e: React.ChangeEvent<HTMLInputElement>, checkbox: Address) => void;
+  addressIds: string[];
+}
+
+const Locations: React.FC<LocationsProps> = ({
+  handlePickup,
+  addressIds
+}) => {
   const [showModal, setShowModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false); 
-  const [address, setAddress] = useState('');
-  const [latitude, setLatitude] = useState<number>();
-  const [longitude, setLongitude] = useState<number>();
-  const [title, setTitle] = useState('');
-  const [records, setRecords] = useState<Addresses>([]);
+  const [address, setAddress] = useState<string>('');
+  const [latitude, setLatitude] = useState<number | undefined>(undefined);
+  const [longitude, setLongitude] = useState<number | undefined>(undefined);
+  const [title, setTitle] = useState<string>('');
+  const [records, setRecords] = useState<Address[]>([]);
   
   const { 
     value,
@@ -47,7 +44,6 @@ interface Addresses {
     debounce: 300,
   });
 
-  console.log(loading);
   const getLocations = () => {
     setLoading(true);
     getRequest(`v1/vendor/1/pickup-locations`)
@@ -60,9 +56,11 @@ interface Addresses {
         setLoading(false);
       });
   };
+
   useEffect(() => {
     getLocations();
   }, []);
+
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
     setAddress('');
@@ -78,14 +76,13 @@ interface Addresses {
         setAddress(description);
         setLatitude(lat);
         setLongitude(lng);
-        
       })
       .catch((error) => {
         console.error("Error: ", error);
       });
   };
 
-  const saveLocation =  () => {
+  const saveLocation = () => {
     if (latitude == undefined || longitude == undefined || address == '' || title == '') {
       return;
     } else {
@@ -119,7 +116,7 @@ interface Addresses {
   };
 
   const handleSaveChanges = () => {
-    //saveLocation();
+    saveLocation();
     setShowModal(false);
   };
 
@@ -127,10 +124,10 @@ interface Addresses {
     setSearchTerm(e.target.value);
   };
 
- 
-  const filteredRecords = records?.filter((record: { title: string; }) =>
+  const filteredRecords = records?.filter((record) =>
     record.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
   return (
     <>
       <input
@@ -140,16 +137,17 @@ interface Addresses {
         value={searchTerm}
         onChange={handleSearchChange}
       />
+      {loading && <div>Loading...</div>}
       <div className="tags-wrap mb-2">
-      {filteredRecords && filteredRecords.map((checkbox:{id:number;title:string}) => (
+        {filteredRecords && filteredRecords.map((checkbox) => (
           <div className="form-check" key={checkbox.id}>
             <input
               type="checkbox"
               id={checkbox.id.toString()}
               className="form-check-input" 
-              checked={addressIds?.includes(checkbox?.id)}
-              onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handlePickup(e, checkbox) }
-              value={checkbox?.id}
+              checked={addressIds?.includes(checkbox.id.toString())}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => handlePickup(e, checkbox)}
+              value={checkbox.id}
             />
             <label className="form-check-label mb-0" htmlFor={checkbox.id.toString()}>
               {checkbox.title}
@@ -174,7 +172,7 @@ interface Addresses {
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="Title"
                 />
-                {title == '' && (
+                {title === '' && (
                   <p className="text-danger text-right">
                     Title is required!
                   </p>
@@ -202,7 +200,7 @@ interface Addresses {
                     ))}
                   </ul>
                 )}
-                {address == '' && (
+                {address === '' && (
                   <p className="text-danger text-right">
                     Address is required!
                   </p>
@@ -211,7 +209,7 @@ interface Addresses {
             </div>
           </>
           <div className="modal-footer">
-            <button type="button" onClick={()=>saveLocation()} className="btn btn-primary">Save changes</button>
+            <button type="button" onClick={saveLocation} className="btn btn-primary">Save changes</button>
           </div>
         </Popup>
       )}
@@ -220,5 +218,3 @@ interface Addresses {
 };
 
 export default Locations;
-
- 

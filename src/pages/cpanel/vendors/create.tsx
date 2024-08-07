@@ -362,29 +362,8 @@ const CreateVendor: React.FC = () => {
                     <div className="col-md-4">
                         <div className="card card-h-100">
                             <div className="card-body right-aside">
-                                <h5 className="card-title">Other Tour Details</h5>
-                                {/* <div className="form-group row">
-                                    <h6>File Upload</h6>
-                                    <div className="col-md-9">
-                                        <div className="custom-file">
-                                            <input
-                                                type="file"
-                                                className="custom-file-input"
-                                                id="validatedCustomFile"
-                                                required
-                                            />
-                                            <label
-                                                className="custom-file-label"
-                                                htmlFor="validatedCustomFile"
-                                            >
-                                                Choose file...
-                                            </label>
-                                            <div className="invalid-feedback">
-                                                Example invalid custom file feedback
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <h5 className="card-title">Other Details</h5>
+                                <br />
                                 <div className="form-group row">
                                     <h6>Category</h6>
                                     <div className="col-md-12">
@@ -429,68 +408,18 @@ const CreateVendor: React.FC = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="form-group row">
-                                    <h6>Facilities</h6>
-                                    <div className="col-md-12">
-                                        <div className="form-check">
-                                            <input
-                                                type="radio"
-                                                className="form-check-input"
-                                                id="customControlValidation1"
-                                                name="radio-stacked"
-                                                required
-                                            />
-                                            <label
-                                                className="form-check-label mb-0"
-                                                htmlFor="customControlValidation1"
-                                            >
-                                                First One
-                                            </label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input
-                                                type="radio"
-                                                className="form-check-input"
-                                                id="customControlValidation2"
-                                                name="radio-stacked"
-                                                required
-                                            />
-                                            <label
-                                                className="form-check-label mb-0"
-                                                htmlFor="customControlValidation2"
-                                            >
-                                                Second One
-                                            </label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input
-                                                type="radio"
-                                                className="form-check-input"
-                                                id="customControlValidation3"
-                                                name="radio-stacked"
-                                                required
-                                            />
-                                            <label
-                                                className="form-check-label mb-0"
-                                                htmlFor="customControlValidation3"
-                                            >
-                                                Third One
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div> */}
-                                <div className="row right-aside-btns">
-                                    <div className="col-md-12 d-flex justify-content-end gap-3">
-                                        <button type="reset" className="btn btn-success text-white">
-                                            Reset
-                                        </button>
-                                        <button type="submit" className="btn btn-primary">
-                                            Save Changes
-                                        </button>
-                                    </div>
-                                </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div className="row right-aside-btns">
+                    <div className="col-md-12 d-flex justify-content-end gap-3">
+                        <button type="reset" className="btn btn-secondary text-white">
+                            Reset
+                        </button>
+                        <button type="submit" className="btn btn-primary">
+                            Save Changes
+                        </button>
                     </div>
                 </div>
             </form>

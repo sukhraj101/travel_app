@@ -1,4 +1,4 @@
-import React from 'react'
+import userIcon from "./../../../assets/images/user.png"
 
 export default function AdminHeader() {
   return (
@@ -6,15 +6,7 @@ export default function AdminHeader() {
       <header className="topbar" data-navbarbg="skin5">
         <nav className="navbar top-navbar navbar-expand-md navbar-dark">
             <div className="navbar-header" data-logobg="skin5">
-              <a className="navbar-brand" href="index.html">
-              <b className="logo-icon ps-2">
-              <img
-                  src="./../../../../public/admin/assets/images/logo-icon.png"
-                  alt="homepage"
-                  className="light-logo"
-                  width="25"
-                  />
-              </b>
+              <a className="navbar-brand" href="/cpanel">
               <span className="logo-text ms-2">
               <img
                   src="./../../../../public/admin/assets/images/logo-text.png"
@@ -66,7 +58,7 @@ export default function AdminHeader() {
                         </li>
                     </ul>
                   </li>
-                  <li className="nav-item search-box">
+                  {/* <li className="nav-item search-box">
                     <a
                         className="nav-link waves-effect waves-dark"
                         href="#"
@@ -79,7 +71,7 @@ export default function AdminHeader() {
                           />
                         <a className="srh-btn"><i className="mdi mdi-window-close"></i></a>
                     </form>
-                  </li>
+                  </li> */}
               </ul>
               <ul className="navbar-nav float-end">
                   <li className="nav-item dropdown">
@@ -215,7 +207,7 @@ export default function AdminHeader() {
                         aria-expanded="false"
                         >
                     <img
-                        src="./assets/images/users/1.jpg"
+                        src={userIcon}
                         alt="user"
                         className="rounded-circle"
                         width="31"

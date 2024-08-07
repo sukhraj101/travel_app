@@ -1,13 +1,14 @@
-import { Outlet } from 'react-router-dom';
-import AdminHeader from '../../components/common/admin/header';
-import AdminSidebar from '../../components/common/admin/sidebar';
-import { useEffect, useState } from 'react';
-import { postRequest } from '../../service';
+import { Outlet } from 'react-router-dom'
+import AdminHeader from '../../components/common/admin/header'
+import AdminSidebar from '../../components/common/admin/sidebar'
+import { useEffect, useState } from 'react'
+import { postRequest } from '../../service'
 import "./../../../public/admin/assets/css/style.min.css"
 
 const AdminLayout = () => { 
-  const [isLogin,setIsLogin] = useState(false);
- useEffect(() => {
+  const [isLogin,setIsLogin] = useState(false)
+  console.log(isLogin)
+  useEffect(() => {
       postRequest(`v1/checkUser`,{})
       .then((res) => {
           if(res.status === 1){ 
@@ -16,21 +17,17 @@ const AdminLayout = () => {
               setIsLogin(true);
           }
       })
-      .catch((e) => {
-          // if(e.response.status == 401){
-          //     window.location.href = "/login"
-          // }
+      .catch(() => {
+        // if(e.response.status == 401){
+        //  window.location.href = "/login"
+        // }
       }).finally(() => {
           console.log("done")
       });
-},[]);
-
-
-
+  },[])
 
   return (
     <>
-    
       <div 
         id="main-wrapper"
         data-layout="vertical"
@@ -40,10 +37,8 @@ const AdminLayout = () => {
         data-header-position="absolute"
         data-boxed-layout="full"
       >
-
         <AdminHeader />
         <AdminSidebar />
-        
         <div className="page-wrapper">
           <div className="page-breadcrumb">
             <div className="row">
@@ -65,9 +60,7 @@ const AdminLayout = () => {
               </div>
             </div>
           </div>
-          
           <Outlet />
-          
           <footer className="footer text-center">
             All Rights Reserved by Matrix-admin. Designed and Developed by
             <a href="https://www.wrappixel.com">WrapPixel</a>.

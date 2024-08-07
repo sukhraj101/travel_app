@@ -1,27 +1,28 @@
 /* eslint-disable no-case-declarations */
-import React, { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import "./index.css";
-import { Controller, useFieldArray, useForm } from "react-hook-form";
-import { getRequest, postRequest } from "../../../service";
-import { stringify } from "querystring";
-import UploadFile from "../../../components/common/admin/components/formcontrols/UploadFile";
-import { Url } from "url";
+import { Controller, SubmitHandler, useFieldArray, useForm } from "react-hook-form";
+import { getRequest, postRequest } from "../../../service"; 
+import UploadFile from "../../../components/common/admin/components/formcontrols/UploadFile"; 
 import TagSection from "./sections/tags";
 import Locations from "./sections/locations";
+import { useParams } from "react-router-dom";
+import { loadingButtonClasses } from "@mui/lab";
+ 
 
 interface LoginFormInputs {
   name: string;
-  thumbnail: string;
+  thumbnail: string | null;
   description: number;
   short_description: string;
-  country: number;
-  state: number;
-  city: number;
+  country: string;
+  state: string;
+  city: string;
   address: string;
   latitude: string;
   longitude: string;
-  translations: Translation[];
+  translations: Translation[]; 
   include_services: IncludeService[];
   categories: number[];
   languages: number[];
@@ -30,7 +31,10 @@ interface LoginFormInputs {
   people_limit: number;
   children_price: number;
   adult_price: number;
-  tags: string[]
+  tags: string[];
+  included:string[];
+  excluded:string[];
+  pickup_address:PickupAddress[];
 }
 
 interface ErrorMessage {
@@ -80,11 +84,53 @@ type Translation = {
   language_name: string;
 };
 
+type PickupAddress = {
+  address_id: number; 
+  title:string;
+  group_pickup_price: number;
+  group_dropoff_price: number;
+  group_extra_km: number;
+  private_pickup_price: number;
+  private_dropoff_price: number;
+  private_extra_km: number;
+  vip_pickup_price: number;
+  vip_dropoff_price: number;
+  vip_extra_km: number;
+  isfree: number;
+};
+
+ 
+
 type IncludeService = {
   service: string;
   details: string;
 };
 
+interface Product{
+  name: string;
+  description: string;
+  thumbnail:string;
+  short_description:string;
+  country_id:string;
+  state_id:string;
+  city_id:string;
+  address:string;
+  latitude:string;
+  longitude:string; 
+  pickup_address: PickupAddress[];
+  images:string[];
+  translations: Translation[];  
+  adult_price:number; 
+  children_price:number;
+  adult_limit:number;
+  children_limit:number;
+  included:string[];
+  excluded:string[];
+  tags:string[];
+  categories:string[];
+}
+
+  
 const CreateTour = () => {
   const [country, setCountry] = useState<Country[]>([]);
   const [state, setState] = useState<State[]>([]);
@@ -92,10 +138,11 @@ const CreateTour = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [languages, setLanguages] = useState<Languages[]>([]);
   const [categories, setCategories] = useState<Categories[]>([]);
-  const [galleryImages, setGalleryImages] = useState([]);
+  const [galleryImages, setGalleryImages] = useState<string[]>([]);
+  const [product, setProduct] = useState<Product>();
+ console.log(product);
   const {
-    register,
-    reset,
+    register, 
     control,
     setValue,
     handleSubmit,
@@ -119,18 +166,108 @@ const CreateTour = () => {
     name: "translations",
   });
 
+  const {
+    fields: pickupFields,
+    append: appendPickup,
+    remove: removePickup,
+  } = useFieldArray({
+    control,
+    name: "pickup_address",
+  });
+
+
+  
+
+  const { id } = useParams();
   useEffect(() => {
     getCountry();
     getLanguages();
     getCategories();
-  }, []);
+    productDetail();
+  }, [])
 
 
-  const handleTags = (tags:string[]) => {
-    watch('tags',tags); 
+  const productDetail = () => {
+    getRequest(`v1/product/${id}/detail`)
+      .then((res: { data: Product }) => {
+        setProduct(res.data);
+        setValue('name',res?.data?.name);
+        setValue('thumbnail',res?.data?.thumbnail);
+        setValue('description',res?.data?.description);
+        setValue('short_description',res?.data?.short_description);  
+        setValue('country',res?.data?.country_id); 
+        setValue('state',res?.data?.state_id); 
+        setValue('city',res?.data?.city_id); 
+        setValue('address',res?.data?.address); 
+        setValue('latitude',res?.data?.latitude); 
+        setValue('longitude',res?.data?.longitude);  
+        setValue('price_type',res?.data?.price_type); 
+        setValue('children_price',res?.data?.children_price);  
+        setValue('adult_price',res?.data?.adult_price);  
+
+        setValue('included',res?.data?.included);
+        setValue('excluded',res?.data?.excluded);
+        setValue('tags',res?.data?.tags); 
+        setValue('categories',res?.data?.categories);
+        
+        res?.data?.pickup_address.map((p:PickupAddress) => { 
+          const isDuplicate = pickupFields.some(field => field.address_id === p.address_id);
+          if (!isDuplicate) {
+             appendPickup(p)
+          }
+        });
+
+        res?.data?.translations.map((t:Translation) => {  
+          const isDuplicate = translationFields.some(field => field.language_id === t.language_id);
+          if (!isDuplicate) {
+            appendTranslation(t)
+          }
+        }); 
+        setGalleryImages(res?.data?.images);
+
+      })
+      .catch((err: unknown) =>  console.log(err));
+  };
+
+
+  const handleTags = (name:string,tags:string[]) => {
+    watch(name,tags); 
     console.log(tags);
   }
 
+ const countryID = watch('country'); 
+ const stateID = watch('state'); 
+ const getState = useCallback(() => {
+  if (countryID) {
+        getRequest(`v1/states?skip=0&limit=1000&country_id=${countryID}`)
+        .then((res: { data: State[] }) => {
+          setState(res.data); 
+        })
+        .catch((err: unknown) => {
+          console.log(err);
+        });
+    }
+}, [countryID]);
+
+const getCity = useCallback(() => {
+  if (stateID) {
+  getRequest(`v1/cities?skip=0&limit=1000&state_id=${stateID}`)
+    .then((res: { data: City[] }) => {
+      setCity(res.data); 
+    })
+    .catch((err: unknown) => {
+      console.log(err);
+    });
+  }
+}, [stateID]);
+
+useEffect(() => {
+  getState();
+}, [countryID, getState]);
+
+useEffect(() => {
+  getCity();
+}, [stateID, getCity]);
   const getCategories = () => {
     getRequest("v1/category/listing?skip=0&limit=50&tree=1&parent=0")
       .then((res: { data: Categories[] }) => {
@@ -160,42 +297,22 @@ const CreateTour = () => {
         console.log(err);
       });
   };
-
-  const getState = () => {
-    getRequest(`v1/states?skip=0&limit=1000&country_id=${watch("country")}`)
-      .then((res: { data: State[] }) => {
-        setState(res.data);
-      })
-      .catch((err: unknown) => {
-        console.log(err);
-      });
-  };
-
-  const getCity = () => {
-    getRequest(`v1/cities?skip=0&limit=1000&state_id=${watch("state")}`)
-      .then((res: { data: City[] }) => {
-        setCity(res.data);
-      })
-      .catch((err: unknown) => {
-        console.log(err);
-      });
-  };
+ 
 
   const onSubmit: SubmitHandler<LoginFormInputs> = (data: any) => {
     console.log(data);
     setLoading(true);
-    // postRequest(`v1/vendor/store`, data)
-    //   .then((res) => {
-    //     if (res.success) {
-    //       alert("Vendor created successfully");
-    //       reset();
-    //       window.location.href = "/cpanel/vendor/listing";
-    //     }
-    //   })
-    //   .catch(() => setErrorMessage("Error creating category"))
-    //   .finally(() => {
-    //     setLoading(false);
-    //   });
+    postRequest(`v1/product/${id}/update`, data)
+      .then((res) => {
+        if (res.success) {
+          alert("Vendor created successfully"); 
+          window.location.href = "/cpanel/vendor/listing";
+        }
+      })
+      .catch(() => alert("Error creating category"))
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const handleTranslations = (
@@ -203,13 +320,17 @@ const CreateTour = () => {
     language: Languages
   ) => {
     if (e.target?.checked) {
-      appendTranslation({
-        name: "",
-        description: "",
-        short_description: "",
-        language_id: e.target.value,
-        language_name: language?.language_name,
-      });
+      const isDuplicate = translationFields.some(field => field.language_id === language.language_id);
+      if (!isDuplicate) {
+        appendTranslation({
+          name: "",
+          description: "",
+          short_description: "",
+          language_id: e.target.value,
+          language_name: language?.language_name,
+        })
+      }
+    
     } else {
       const index = translationFields.findIndex(
         (t) => t.language_id == e.target.value
@@ -217,6 +338,45 @@ const CreateTour = () => {
       removeTranslation(index);
     }
   };
+
+  const handlePickup = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    address: { id: number; title: string }
+  ) => {
+    if (e.target.checked) {
+      // Check if the address is already in the pickupFields array
+      const isDuplicate = pickupFields.some(field => field.address_id === address.id);
+      if (!isDuplicate) {
+        appendPickup({ 
+          address_id: address.id, 
+          title: address.title,
+          group_pickup_price: 0,
+          group_dropoff_price: 0,
+          group_extra_km: 0,
+          private_pickup_price: 0,
+          private_dropoff_price: 0,
+          private_extra_km: 0,
+          vip_pickup_price: 0,
+          vip_dropoff_price: 0,
+          vip_extra_km: 0,
+          isfree: 0
+        });
+      }
+    } else {
+      const index = pickupFields.findIndex(
+        (t) => t.address_id === address.id
+      );
+      if (index !== -1) {
+        removePickup(index);
+      }
+    }
+  };
+  
+
+
+  
+  const addressIds:string[] = pickupFields.map((p) => p.address_id);
+ 
 
   const handleImageUpload = (name: string, url: string) => {
     switch (name) {
@@ -235,13 +395,14 @@ const CreateTour = () => {
   };
 
   // Watch the value of the price type field
-  const priceType = watch("price_type");
+  const priceType = watch("price_type"); 
   return (
     <>
+    {loading}
       <div className="container-fluid">
         <form onSubmit={handleSubmit(onSubmit)} className="form-horizontal">
           <div className="row">
-            <div className="col-md-8">
+            <div className="col-md-10">
               <h5 className="card-title mb-2">Product Details</h5>
               <div className="accordion-item card">
                 <h2 className="accordion-header" id="generalInfoTop">
@@ -253,7 +414,7 @@ const CreateTour = () => {
                     aria-expanded="true"
                     aria-controls="collapseTop"
                   >
-                    General Info (English)
+                    General Info 
                   </button>
                 </h2>
                 <div
@@ -423,7 +584,7 @@ const CreateTour = () => {
                           placeholder="100"
                           autoComplete="on"
                           {...register("people_limit", {
-                            required: "People limit is required",
+                              required: "People limit is required",
                           })}
                         />
                         {errors.people_limit && (
@@ -433,6 +594,69 @@ const CreateTour = () => {
                         )}
                       </div>
                     </div>
+
+                    {priceType !== "children" && (
+                      <div className="form-group row">
+                        <label
+                          htmlFor="price"
+                          className="col-sm-3 control-label col-form-label"
+                        >
+                          <span>
+                            Price <small>Per Adult</small>
+                          </span>
+                        </label>
+                        <div className="col-sm-9">
+                          <input
+                            type="number"
+                            id="adult_price"
+                            className="form-control"
+                            placeholder="Price"
+                            {...register("adult_price", {
+                              required:
+                                priceType !== "children"
+                                  ? "Adult price is required"
+                                  : false,
+                            })}
+                          />
+                          {errors.adult_price && (
+                            <p className="text-danger text-right">
+                              {errors.adult_price.message}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    )}
+                    {priceType !== "adult" && (
+                      <div className="form-group row">
+                        <label
+                          htmlFor="price"
+                          className="col-sm-3 control-label col-form-label"
+                        >
+                          <span>
+                            Price <small>Per Child (Under 12 yrs)</small>
+                          </span>
+                        </label>
+                        <div className="col-sm-9">
+                          <input
+                            type="number"
+                            id="children_price"
+                            className="form-control"
+                            placeholder="Price"
+                            {...register("children_price", {
+                              required:
+                                priceType !== "adult"
+                                  ? "Price is required"
+                                  : false,
+                            })}
+                          />
+                          {errors.children_price && (
+                            <p className="text-danger text-right">
+                              {errors.children_price.message}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -551,102 +775,7 @@ const CreateTour = () => {
                 </div>
               ))}
 
-              {/* <div className="accordion-item card">
-                <h2 className="accordion-header" id="charges">
-                  <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chargesWrap" aria-expanded="true" aria-controls="chargesWrap">
-                    Charges
-                  </button>
-                </h2>
-                <div id="chargesWrap" className="accordion-collapse collapse show" aria-labelledby="charges">
-                  <div className="card-body">
-                  </div>
-                </div>
-              </div>*/}
-
-              <div className="accordion-item card">
-                <h2 className="accordion-header" id="charges">
-                  <button
-                    className="accordion-button"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#chargesWrap"
-                    aria-expanded="true"
-                    aria-controls="chargesWrap"
-                  >
-                    Charges
-                  </button>
-                </h2>
-                <div
-                  id="chargesWrap"
-                  className="accordion-collapse collapse show"
-                  aria-labelledby="charges"
-                >
-                  <div className="card-body">
-                    {priceType !== "children" && (
-                      <div className="form-group row">
-                        <label
-                          htmlFor="price"
-                          className="col-sm-3 control-label col-form-label"
-                        >
-                          <span>
-                            Price <small>Per Adult</small>
-                          </span>
-                        </label>
-                        <div className="col-sm-9">
-                          <input
-                            type="number"
-                            id="adult_price"
-                            className="form-control"
-                            placeholder="Price"
-                            {...register("adult_price", {
-                              required:
-                                priceType !== "children"
-                                  ? "Adult price is required"
-                                  : false,
-                            })}
-                          />
-                          {errors.adult_price && (
-                            <p className="text-danger text-right">
-                              {errors.adult_price.message}
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                    )}
-                    {priceType !== "adult" && (
-                      <div className="form-group row">
-                        <label
-                          htmlFor="price"
-                          className="col-sm-3 control-label col-form-label"
-                        >
-                          <span>
-                            Price <small>Per Child (Under 12 yrs)</small>
-                          </span>
-                        </label>
-                        <div className="col-sm-9">
-                          <input
-                            type="number"
-                            id="children_price"
-                            className="form-control"
-                            placeholder="Price"
-                            {...register("children_price", {
-                              required:
-                                priceType !== "adult"
-                                  ? "Price is required"
-                                  : false,
-                            })}
-                          />
-                          {errors.children_price && (
-                            <p className="text-danger text-right">
-                              {errors.children_price.message}
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
+            
 
               <div className="accordion-item card">
                 <h2 className="accordion-header" id="location">
@@ -681,10 +810,9 @@ const CreateTour = () => {
                           {...register("country", {
                             required: "Country is required",
                           })}
-                          onChange={(e: event) => {
-                            setValue("country", e.target.value);
-                            getState();
-                          }}
+                          onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                            setValue("country", e.target.value)
+                          }
                         >
                           <option value="">Select Country</option>
                           {country.map((c) => (
@@ -714,11 +842,10 @@ const CreateTour = () => {
                           id="state"
                           {...register("state", {
                             required: "state is required",
-                          })}
-                          onChange={(e: event) => {
-                            setValue("state", e.target.value);
-                            getCity();
-                          }}
+                          })} 
+                          onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                            setValue("state", e.target.value)
+                          }
                         >
                           <option value="">Select State</option>
                           {state.map((c) => (
@@ -749,6 +876,7 @@ const CreateTour = () => {
                           {...register("city", {
                             required: "city is required",
                           })}
+                         
                         >
                           <option value="">Select city</option>
                           {city.map((c) => (
@@ -816,7 +944,6 @@ const CreateTour = () => {
                         )}
                       </div>
                     </div>
-
                     <div className="form-group row">
                       <label
                         htmlFor="longitude"
@@ -845,8 +972,188 @@ const CreateTour = () => {
                   </div>
                 </div>
               </div>
+
+                {pickupFields && 
+                  <div className="accordion-item card">
+                    <h2 className="accordion-header" id="selectedPickup">
+                      <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#selectedPickupWrap" aria-expanded="true" aria-controls="selectedPickupWrap">
+                        All Pick Up Locations
+                      </button>
+                      </h2>
+                      <div id="selectedPickupWrap" className="accordion-collapse collapse show" aria-labelledby="selectedPickup">
+                        <div className="card-body"> 
+                        {pickupFields && pickupFields.map((pickup:PickupAddress,index) => (      
+                          <div key={index} className="accordion-item card">
+                            <h2 className="accordion-header" id={`selectedPickup${index}`}>
+                              <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={`#selectedPickup${index}Wrap`} aria-expanded="true" aria-controls={`selectedPickup${index}Wrap`}>
+                                 {pickup?.title}
+                              </button>
+                            </h2>
+                            <div id={`selectedPickup${index}Wrap`} className="accordion-collapse collapse show" aria-labelledby={`selectedPickup${index}`}>
+                                <div className="card-body"> 
+                                  
+                                  <div className="form-group row">
+                                      <label htmlFor="group_pickup_price" className="col-sm-3 control-label col-form-label"><span>Public Transportation Charges</span></label>
+                                      <div className="col-sm-3"> 
+                                            <Controller
+                                              control={control}
+                                              name={`pickup_address.${index}.group_pickup_price` as const}
+                                              render={({ field }) => (
+                                               <> 
+                                               <label>Pickup</label>
+                                                <input
+                                                  type="number"
+                                                  {...field}
+                                                  placeholder="Pickup Price"
+                                                  className="form-control"
+                                                />
+                                               </>
+                                              )}
+                                            />
+                                        </div>
+                                      <div className="col-sm-3"> 
+                                        <Controller
+                                              control={control}
+                                              name={`pickup_address.${index}.group_dropoff_price` as const}
+                                              render={({ field }) => (
+                                               <>
+                                                <label>Dropoff</label>
+                                                <input
+                                                  type="number"
+                                                  {...field}
+                                                  placeholder="Dropoff Price"
+                                                  className="form-control"
+                                                />
+                                               </>
+                                              )}
+                                            />
+                                        </div>
+                                      <div className="col-sm-3"> 
+                                        <Controller
+                                              control={control}
+                                              name={`pickup_address.${index}.group_extra_km` as const}
+                                              render={({ field }) => (
+                                               <>
+                                                   <label>Price (Per km)</label>
+                                                  <input
+                                                    type="number"
+                                                    {...field}
+                                                    placeholder="price per km"
+                                                    className="form-control"
+                                                  />
+                                               </>
+                                              )}
+                                            />
+                                        </div>
+                                  </div>
+
+
+                                 
+
+                                  <div className="form-group row">
+                                      <label htmlFor="private_pickup_price" className="col-sm-3 control-label col-form-label"><span>Private Transportation Charges</span></label>
+                                      <div className="col-sm-3"> 
+                                            <Controller
+                                              control={control}
+                                              name={`pickup_address.${index}.private_pickup_price` as const}
+                                              render={({ field }) => (
+                                                <input
+                                                  type="number"
+                                                  {...field}
+                                                  placeholder="Pickup Price"
+                                                  className="form-control"
+                                                />
+                                              )}
+                                            />
+                                        </div>
+                                      <div className="col-sm-3"> 
+                                        <Controller
+                                              control={control}
+                                              name={`pickup_address.${index}.private_dropoff_price` as const}
+                                              render={({ field }) => (
+                                                <input
+                                                  type="number"
+                                                  {...field}
+                                                  placeholder="Dropoff Price"
+                                                  className="form-control"
+                                                />
+                                              )}
+                                            />
+                                        </div>
+                                      <div className="col-sm-3"> 
+                                        <Controller
+                                              control={control}
+                                              name={`pickup_address.${index}.private_extra_km` as const}
+                                              render={({ field }) => (
+                                                <input
+                                                  type="number"
+                                                  {...field}
+                                                  placeholder="price per km"
+                                                  className="form-control"
+                                                />
+                                              )}
+                                            />
+                                        </div>
+                                  </div>
+  
+
+                                  <div className="form-group row">
+                                      <label htmlFor="vip_pickup_price" className="col-sm-3 control-label col-form-label"><span>VIP Transportation Charges</span></label>
+                                      <div className="col-sm-3"> 
+                                            <Controller
+                                              control={control}
+                                              name={`pickup_address.${index}.vip_pickup_price` as const}
+                                              render={({ field }) => (
+                                                <input
+                                                  type="number"
+                                                  {...field}
+                                                  placeholder="Pickup Price"
+                                                  className="form-control"
+                                                />
+                                              )}
+                                            />
+                                        </div>
+                                      <div className="col-sm-3"> 
+                                        <Controller
+                                              control={control}
+                                              name={`pickup_address.${index}.vip_dropoff_price` as const}
+                                              render={({ field }) => (
+                                                <input
+                                                  type="number"
+                                                  {...field}
+                                                  placeholder="Dropoff Price"
+                                                  className="form-control"
+                                                />
+                                              )}
+                                            />
+                                        </div>
+                                      <div className="col-sm-3"> 
+                                        <Controller
+                                              control={control}
+                                              name={`pickup_address.${index}.vip_extra_km` as const}
+                                              render={({ field }) => (
+                                                <input
+                                                  type="number"
+                                                  {...field}
+                                                  placeholder="price per km"
+                                                  className="form-control"
+                                                />
+                                              )}
+                                            />
+                                        </div>
+                                  </div>
+
+
+                                </div>
+                            </div>
+                          </div>                    
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                }
             </div>
-            <div className="col-md-4">
+            <div className="col-md-2">
               <h5 className="card-title mb-2">Other Tour Details</h5>
               <div className="accordion-item card">
                 <h2 className="accordion-header" id="Timages">
@@ -854,15 +1161,15 @@ const CreateTour = () => {
                     Tour Images
                   </button>
                 </h2>
-                <div id="TimagesWrap" className="accordion-collapse collapse" aria-labelledby="Timages">
+                <div id="TimagesWrap" className="accordion-collapse collapse show" aria-labelledby="Timages">
                   <div className="card-body">
                     <div className="form-group">                     
                       <UploadFile
                         onUpload={handleImageUpload}
                         name={"thumbnail"}
                         path={"vendors/"}
-                        type={"category"}
-                        val={watch("thumbnail")}
+                        type={"product"}
+                        val={''}
                       />
                       <input
                         type="hidden"
@@ -877,62 +1184,21 @@ const CreateTour = () => {
                       )}
                       <div className="tour-banner">
                         <div className="remove-image"></div>
-                        <img src="http://127.0.0.1:8000/vendors/1722160685biMpxhousebeautifullivingroompatternsstyleinspiration21522249825.jpg" alt="Gallery Image 0" />
+                        <img src={watch('thumbnail')} alt="Gallery Image 0" />
                       </div>
                     </div>
-                    <div className="form-group row tour-gallery">
-                      <div className="tour-image">
-                        <div className="remove-image"></div>
-                        <img src="http://127.0.0.1:8000/vendors/1722160685biMpxhousebeautifullivingroompatternsstyleinspiration21522249825.jpg" alt="Gallery Image 0" />
-                      </div>
-                      <div className="tour-image">
-                        <div className="remove-image"></div>
-                        <img src="http://127.0.0.1:8000/vendors/1722160685biMpxhousebeautifullivingroompatternsstyleinspiration21522249825.jpg" alt="Gallery Image 0" />
-                      </div>
-                      <div className="tour-image">
-                        <div className="remove-image"></div>
-                        <img src="http://127.0.0.1:8000/vendors/1722160685biMpxhousebeautifullivingroompatternsstyleinspiration21522249825.jpg" alt="Gallery Image 0" />
-                      </div>
-                      <div className="tour-image">
-                        <div className="remove-image"></div>
-                        <img src="http://127.0.0.1:8000/vendors/1722160685biMpxhousebeautifullivingroompatternsstyleinspiration21522249825.jpg" alt="Gallery Image 0" />
-                      </div>
-                      <div className="tour-image">
-                        <div className="remove-image"></div>
-                        <img src="http://127.0.0.1:8000/vendors/1722160685biMpxhousebeautifullivingroompatternsstyleinspiration21522249825.jpg" alt="Gallery Image 0" />
-                      </div>
-                      <div className="tour-image">
-                        <div className="remove-image"></div>
-                        <img src="http://127.0.0.1:8000/vendors/1722160685biMpxhousebeautifullivingroompatternsstyleinspiration21522249825.jpg" alt="Gallery Image 0" />
-                      </div>
-                      <div className="tour-image">
-                        <div className="remove-image"></div>
-                        <img src="http://127.0.0.1:8000/vendors/1722160685biMpxhousebeautifullivingroompatternsstyleinspiration21522249825.jpg" alt="Gallery Image 0" />
-                      </div>
-                      <div className="tour-image">
-                        <div className="remove-image"></div>
-                        <img src="http://127.0.0.1:8000/vendors/1722160685biMpxhousebeautifullivingroompatternsstyleinspiration21522249825.jpg" alt="Gallery Image 0" />
-                      </div>
-                      {galleryImages &&
-                        galleryImages.map((image, index) => (
-                          <div className="col-md-3" key={index}>
-                            <img src={image} alt={`Gallery Image ${index}`} />
-                          </div>
-                        ))}
-                    </div>                    
+                                  
                     <div className="form-group row mb-0">
                       <UploadFile
                         onUpload={handleImageUpload}
                         name={"images"}
                         path={"vendors/"}
-                        type={"category"}
+                        type={"product"}
                         val={""}
                       />
                       <input
                         type="hidden"
-                        {...register(`images`, {
-                          required: "This field is required",
-                        })}
+                        {...register(`images`)}
                       />
                       {errors.images && (
                         <p className="text-danger text-right">
@@ -940,6 +1206,16 @@ const CreateTour = () => {
                         </p>
                       )}
                     </div>
+
+                    <div className="form-group row tour-gallery">  
+                      {galleryImages &&
+                        galleryImages.map((image, index) => ( 
+                           <div className="tour-image"  key={index}>
+                              <div className="remove-image"></div>
+                              <img src={image} alt={`Gallery Image ${index}`} />
+                            </div>
+                        ))}
+                    </div>     
                   </div>
                 </div>
               </div>
@@ -950,14 +1226,16 @@ const CreateTour = () => {
                     Category
                   </button>
                 </h2>
-                <div id="categoryWrap" className="accordion-collapse collapse" aria-labelledby="category">
+                <div id="categoryWrap" className="accordion-collapse collapse show" aria-labelledby="category">
                   <div className="card-body">
                     {categories.map((cate) => (
                       <>
                         <div className="form-check" key={cate.id}>
                           <input
                             type="checkbox"
-                            {...register(`categories`)}
+                            {...register(`categories`, {
+                              required: "Category is required",
+                            })}
                             className="form-check-input"
                             value={cate.id}
                             id={`customControlValidation-${cate.id}`}
@@ -978,7 +1256,9 @@ const CreateTour = () => {
                                       type="checkbox"
                                       className="form-check-input"
                                       id={`customControlValidation-${sub.id}`}
-                                      {...register(`categories`)}
+                                      {...register(`categories`, {
+                                        required: "Category is required",
+                                      })}
                                       value={sub.id}
                                     />
                                     <label
@@ -997,7 +1277,9 @@ const CreateTour = () => {
                                             <input
                                               type="checkbox"
                                               id={`customControlValidation-${child.id}`}
-                                              {...register(`categories`)}
+                                              {...register(`categories`, {
+                                                required: "Category is required",
+                                              })}
                                               className="form-check-input"
                                               value={child.id}
                                             />
@@ -1017,6 +1299,12 @@ const CreateTour = () => {
                         </div>
                       </>
                     ))}
+
+                      {errors.categories && (
+                        <p className="text-danger text-right">
+                          {errors.categories.message}
+                        </p>
+                      )}
                   </div>
                 </div>
               </div>
@@ -1062,20 +1350,47 @@ const CreateTour = () => {
                 </h2>
                 <div id="tagsWrap" className="accordion-collapse collapse show" aria-labelledby="tags">
                   <div className="card-body">
-                    <TagSection handleTags={handleTags}/>
+                    <TagSection  name={'tags'} type={'tags'} register={register}/>
                   </div>
                 </div>
               </div>
+
+             <div className="accordion-item card">
+                <h2 className="accordion-header" id="includes">
+                  <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#includesWrap" aria-expanded="true" aria-controls="includesWrap">
+                  Included
+                  </button>
+                </h2>
+                <div id="includesWrap" className="accordion-collapse collapse show" aria-labelledby="includes">
+                  <div className="card-body">
+                    <TagSection  name={'included'} type={'Included'} register={register}/>
+                  </div>
+                </div>
+              </div>  
+
+
+              <div className="accordion-item card">
+                <h2 className="accordion-header" id="includes">
+                  <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#includesWrap" aria-expanded="true" aria-controls="includesWrap">
+                  Excluded
+                  </button>
+                </h2>
+                <div id="includesWrap" className="accordion-collapse collapse show" aria-labelledby="includes">
+                  <div className="card-body">
+                    <TagSection type={'Excluded'} name={'excluded'} register={register}/>
+                  </div>
+                </div>
+              </div> 
               
               <div className="accordion-item card">
-                <h2 className="accordion-header" id="tags">
-                  <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#tagsWrap" aria-expanded="true" aria-controls="tagsWrap">
+                <h2 className="accordion-header" id="locations">
+                  <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#locationsWrap" aria-expanded="true" aria-controls="locationsWrap">
                     Pickup Locations
                   </button>
                 </h2>
-                <div id="tagsWrap" className="accordion-collapse collapse show" aria-labelledby="tags">
+                <div id="locationsWrap" className="accordion-collapse collapse show" aria-labelledby="locations">
                   <div className="card-body">
-                    <Locations />
+                    <Locations handlePickup={handlePickup} addressIds={addressIds}  handleTags={handleTags}/>
                   </div>
                 </div>
               </div>
@@ -1086,7 +1401,7 @@ const CreateTour = () => {
             <div className="col-md-12 d-flex justify-content-end gap-3">
               <button
                 type="reset"
-                className="btn btn-success text-white"
+                className="btn btn-secondary text-white"
               >
                 Reset
               </button>

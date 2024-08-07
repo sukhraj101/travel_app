@@ -1,0 +1,202 @@
+.subcriptionSec{
+    padding:100px 0;
+    background:linear-gradient(to bottom, #f5f5f5 50%, white 50%);
+}
+.subcriptionSec *{
+    font-family: 'Nunito', sans-serif;
+}
+.subcriptionOuter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin:0 auto;
+    max-width: 1200px;
+}
+
+.subcriptionOuter .subcriptionInner {
+    flex: 0 0 33.33%;
+    padding:0 20px;
+}
+
+.subcriptionOuter .subcriptionInner .subscriptionBox {
+    background-color: #ffffff;
+    padding:40px 20px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    position: relative;
+    transition:all .4s;
+    box-shadow:0px 14px 30px -2px rgba(0, 0, 0,0.1);
+}
+.packageIcon {
+    width: 90px;
+    height: 90px;
+    background-color: #e8e5ff;
+    border-radius: 50%;
+    display: flex;
+    margin:15px auto;
+    justify-content: center;
+    align-items: center;
+    border:1px solid #b7b0f1;
+}
+
+.packageIcon i {
+    font-size: 44px;
+}
+.packagePrice h5 {
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 500;
+    font-style: italic;
+}
+.packageTitle  h4 {
+    font-size: 28px;
+    line-height: 34px;
+    font-weight: bold;
+    color: #7460ee;
+}
+.packageCta a.btn {
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight:700;
+    background-color: #7460ee;
+    border-color: #7460ee;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    outline: none !important;
+    box-shadow:none !important;
+}
+.packageCta {
+    margin-top: 35px;
+}
+.subscriptionBox ul {
+    margin-top: 20px;
+    border-top: 1px solid #f1f1f1;
+    padding-top: 20px;
+}
+.subscriptionBox ul li {
+    display: flex;
+    gap: 10px;
+    font-size: 15px;
+    line-height: 22px;
+    margin-top: 11px;
+    font-weight: 600;
+}
+.subscriptionBox ul li i {
+    font-size: 20px;
+    color:var(--ds-background-selected-bold-pressed);
+}
+
+.subcriptionSec form li label .switchCTA{
+    width: 93px;
+    height: 35px;
+    background-color:#cfcfcf;
+    border-radius: 50px;
+    border: 1px solid #cfcfcf;
+    z-index: 0;
+}
+.subcriptionSec form ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    gap: 60px;
+    margin: 15px 0 50px;
+}
+.subcriptionSec form li label .switchCTA {
+    position: relative;
+    cursor: pointer;
+}
+.subcriptionSec form label .switchCTA:after {
+    content: "";
+    position: absolute;
+    left:-1px;
+    width: 33px;
+    height: 33px;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    z-index: 8;
+    top: 0;
+    translate: 0 0;
+    transition: all .3s;
+}
+.text-purple{
+    color:var(--ds-background-selected-bold-pressed);
+}
+.subcriptionSec form li label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700 !important;
+    flex-direction: column-reverse;
+}
+.subcriptionSec form label input:checked + .switchCTA{
+    background-color: #7460ee;
+}
+.subcriptionSec form label input:checked + .switchCTA:after{
+    translate:60px 0;
+}
+.subcriptionSec h2 {
+    font-size: 36px;
+    line-height: 42px;
+    font-weight: 800;
+    color: #222222;
+}
+.subcriptionSec h2 span{
+    font-weight: 800;
+}
+.subcriptionSec p {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #222222;
+}
+.subcriptionSec form li label input {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+}
+.subcriptionSec form ul li {
+    flex: 0 0 8%;
+}
+.subcriptionSec form li label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700 !important;
+}
+
+
+/* Active Box */
+.subcriptionInner.packageActive .subscriptionBox{
+    border-color:var(--ds-background-selected-bold-pressed);
+    transform: scale(1.05);
+}
+.subcriptionInner.packageActive .subscriptionBox {
+    background-color:var(--ds-background-selected-bold-pressed);
+}
+.subcriptionInner.packageActive .subscriptionBox .packageTitle h4,
+.subcriptionInner.packageActive .subscriptionBox .packagePrice h5,
+.subcriptionInner.packageActive .subscriptionBox ul li,
+.subcriptionInner.packageActive .subscriptionBox ul li i,
+.subcriptionInner.packageActive .subscriptionBox .packageIcon i,
+.subcriptionSec .packageActive p{
+    color:#ffffff;
+}
+.subcriptionInner.packageActive .subscriptionBox .packageIcon i,
+.subcriptionInner.packageActive .subscriptionBox .packageCta a.btn{
+    color:var(--ds-background-selected-bold-pressed);
+}
+.subcriptionInner.packageActive .subscriptionBox .packageCta a.btn,
+.subcriptionInner.packageActive .subscriptionBox .packageIcon{
+    background-color:#ffffff;
+    border-color:#ffffff;
+}
+.subcriptionInner.packageActive .subscriptionBox .packageIcon{
+    border-color: #584ca5;
+}

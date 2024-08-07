@@ -26,19 +26,71 @@
 
 .activity-name {
     font-family: Gilroy;
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+    color: #282C30;
+    flex: 0 0 80%;
+}
+.company-name .badge {
+    font-size: 12px;
+    margin-right: 9px;
+    margin-top: 10px !important;
+    font-weight: 700;
+    color: #000000 !important;
+    background-color: #ffb848 !important;
+}
+.price-sec .list-inline-item {
+    display: block;
+    text-align: left;
+    color: #060606;
+    font-size: 14px;
     font-weight: 600;
     line-height: 20px;
-    color: #282C30;
+    margin-top: 4px;
 }
-
+.price-sec .list-inline-item span {
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: bold;
+    color: #7460ee;
+}
+.tour-address {
+    margin-top: 8px;
+}
+.tour-cta .btn {
+    display: block;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+}
+.price-sec .list-inline-item i {
+    color: #7460ee;
+    font-size:20px;
+}
+.tour-cta{
+    margin-top: 20px;
+}
 .activity-time {
     font-family: Gilroy;
-    font-size: 11px;
-    font-weight: 400;
-    line-height: 12.76px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
 }
-
+.tour-cta {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+}
+.activity-cards {
+    margin-top:40px;
+}
+#activitiesSlider .card-body {
+    position: relative;
+    padding-bottom:60px !important;
+    overflow: hidden;
+}
 .company-name {
     font-family: Gilroy;
     font-size: 14px;

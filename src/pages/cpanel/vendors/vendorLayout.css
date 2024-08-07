@@ -1,0 +1,46 @@
+.card-body-vendor-banner {
+    margin-bottom: 16px;
+    display: block;
+    width: 100%;
+}
+.card-body-vendor-banner img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.btn.btn-tertiary {
+    padding: 0;
+    cursor: pointer;
+    border-width: 0px;
+    border-radius: 4px;
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 500;
+    -webkit-box-shadow: 0px 12px 12px -12px rgb(0 0 0);
+    -moz-box-shadow: 0px 12px 12px -12px rgb(0 0 0);
+    box-shadow: 0px 12px 12px -12px rgb(0 0 0);
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.btn.btn-tertiary .icon {
+    width: 60px;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+.btn.btn-tertiary .icon i.mdi {
+    font-size: 20px;
+}
+.btn.btn-tertiary {
+    color: #fff;
+    background: #383838;
+    border-color: #383838;
+}
+.btn.btn-tertiary .text h4 {
+    font-size: 22px;
+    margin-bottom: 0;
+}

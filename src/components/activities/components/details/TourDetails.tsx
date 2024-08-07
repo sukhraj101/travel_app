@@ -1,44 +1,46 @@
 const url = import.meta.env.VITE_PUBLIC_URL
 
-const TourDetails = () => {
+const TourDetails = ({
+    product
+}) => {
   return (
     <>
         <div className="card border-0 mb-6">
             <div className="card-body rounded-4 overflow-hidden position-relative">
                 <h5 className="card-title fw-bold text-black lh-sm max-w-xs">
-                    Jet Ski Tour of Jeddah: Red Sea, City Skyline, Palm Jumeirah
+                    {product?.name}
                 </h5>
                 <div className="mb-3">
-                    <img src={`${url}/images/details/sm_logo.png`} alt="Voyage Tours" />
+                    <img src={`/images/details/sm_logo.png`} alt="Voyage Tours" />
                 </div>
                 <p className="card-text fs-sm lh-md fw-medium max-w-xl mb-6">
-                    The Rea Sea is a great vantage point for Jaddah skyline and landmarks—with nothing obstructing the sights. On this tour, get ample time to enjoy the scenery combined with the thrill of a Jet Ski ride. Zip across the water to see Burj Al Arab, Palm Jumeirah, and the city skyline, and take Instagram-worthy photos en route. A choice of departures allows.... <a href="#!" className="fw-bold">Read more</a>
+                    {product?.description}
                 </p>
                 <div className="tour_details_icons row">
                     <div className="col-4">
                         <div className="d-flex align-items-center tour_details_icons_list">
-                            <img src={`${url}/images/details/icon_1.png`} alt="icon_1" className="me"/>
+                            <img src={`/images/details/icon_1.png`} alt="icon_1" className="me"/>
                             <span className="fw-medium">Instant Confirmation</span>
                         </div>
                     </div>
                     <div className="col-4">
                         <div className="d-flex align-items-center tour_details_icons_list">
-                            <img src={`${url}/images/details/icon_1.png`} alt="icon_1" className="me"/>
+                            <img src={`/images/details/icon_1.png`} alt="icon_1" className="me"/>
                             <span className="fw-medium">Refund Guarantee</span>
                         </div>
                     </div>
                     <div className="col-4">
                         <div className="d-flex align-items-center tour_details_icons_list">
-                            <img src={`${url}/images/details/icon_1.png`} alt="icon_1" className="me"/>
+                            <img src={`/images/details/icon_1.png`} alt="icon_1" className="me"/>
                             <span className="fw-medium">Instant Cashback</span>
                         </div>
                     </div>
                 </div>
                 <div className="tour_details_trip_logo position-absolute top-50">
-                    <img src={`${url}/images/details/trip_logo.svg`} alt="trip logo" />
+                    <img src={`/images/details/trip_logo.svg`} alt="trip logo" />
                 </div>
                 <div className="tour_details_bg position-absolute">
-                    <img src={`${url}/images/details/tour_bg.svg`} alt="details_bg" className=""/>
+                    <img src={`/images/details/tour_bg.svg`} alt="details_bg" className=""/>
                 </div>
             </div>
         </div>
@@ -46,13 +48,13 @@ const TourDetails = () => {
             <div className="card-body rounded-4">
                 <div className="d-flex align-items-center mb-4">
                     <div className="tour_details_user_icons">
-                        <img src={`${url}/images/details/user_age_icon.png`} alt="user_age_icon" />
+                        <img src={`/images/details/user_age_icon.png`} alt="user_age_icon" />
                         <span className="fw-medium ms-4">Ages: 14-65, max of 10 per group</span>
                     </div>
                 </div>
                 <div className="d-flex align-items-center">
                     <div className="tour_details_user_icons">
-                        <img src={`${url}/images/details/user_time_icon.png`} alt="user_time_icon" />
+                        <img src={`/images/details/user_time_icon.png`} alt="user_time_icon" />
                         <span className="fw-medium ms-4">Sun-Sat 09:00 to 12:00</span>
                     </div>
                 </div>

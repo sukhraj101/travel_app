@@ -48,3 +48,7 @@ button.close {
 .input-group-text {
     cursor: pointer;
 }
+.modal-footer {
+    padding: 8px 16px 0px;
+    margin-inline: -1rem;
+}

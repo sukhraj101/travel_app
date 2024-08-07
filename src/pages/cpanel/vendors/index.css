@@ -37,5 +37,13 @@
     color: #fff;
 }
 .table-responsive table tbody td img {
-    max-width: 50px;
+    max-width: 80px;
+}
+.vendor-link {
+    color: #1174ff;
+    font-weight: 500;
+    text-decoration: underline;
+}
+.vendor-link:hover {
+    color: #333333;
 }

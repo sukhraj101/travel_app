@@ -10,8 +10,8 @@ interface PopupProps {
 }
 
 const Popup: React.FC<PopupProps> = ({ title, show, children, onClose, onSave }) => {
-  if (!show) return null;
-
+  if (!show) return null
+  console.log(onSave)
   return (
     <div className="modal fade show" style={{ display: 'block' }} tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div className="modal-dialog modal-dialog-centered" role="document">

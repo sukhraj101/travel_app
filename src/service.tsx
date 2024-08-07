@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import environment from "./env"; 
 
 const baseURL: string = environment.base_url; 
+const baseURL2: string = environment.base_url2; 
 const headers: Record<string, string> = {
   "Content-Type": "application/json",
   "Access-Control-Allow-Origin": "*",
@@ -62,8 +63,15 @@ function getToken(){
   return response.data;
 };
 
+const getRequestGod = async (url: string, params = {}) => {
+  headers["Content-Type"] = "application/json";
+  const response = await axios.get(`${baseURL2}${url}`, params);
+  return response.data;
+};
+
 export {
     postRequest,
     loginFun,
-    getRequest
+    getRequest,
+    getRequestGod
 };

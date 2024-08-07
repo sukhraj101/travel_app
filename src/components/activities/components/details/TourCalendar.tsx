@@ -1,5 +1,4 @@
-
-const url = import.meta.env.VITE_PUBLIC_URL;
+ 
 
 const TourCalendar = () => {
    
@@ -10,10 +9,10 @@ const TourCalendar = () => {
                     <div className="selected-day fs-sm fw-medium text-black">Sunday · 8 Nov, 2022</div>
                     <div className="date-controllers">
                         <div className="date-controllers-icon d-flex mb-1">
-                            <img src={`${url}/images/details/up_arrow.png`} alt="controllers" />
+                            <img src={`/images/details/up_arrow.png`} alt="controllers" />
                         </div>
                         <div className="date-controllers-icon d-flex rotate-180">
-                            <img src={`${url}/images/details/up_arrow.png`} alt="controllers" />
+                            <img src={`/images/details/up_arrow.png`} alt="controllers" />
                         </div>
                     </div>
                 </div>
@@ -21,10 +20,10 @@ const TourCalendar = () => {
                     <div className="selected-day fs-sm fw-medium text-black">10:30 AM</div>
                     <div className="date-controllers">
                         <div className="date-controllers-icon d-flex mb-1">
-                            <img src={`${url}/images/details/up_arrow.png`} alt="controllers" />
+                            <img src={`/images/details/up_arrow.png`} alt="controllers" />
                         </div>
                         <div className="date-controllers-icon d-flex rotate-180">
-                            <img src={`${url}/images/details/up_arrow.png`} alt="controllers" />
+                            <img src={`/images/details/up_arrow.png`} alt="controllers" />
                         </div>
                     </div>
                 </div>
