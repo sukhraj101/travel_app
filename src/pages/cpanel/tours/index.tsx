@@ -34,6 +34,9 @@ interface LoginFormInputs {
   tags: string[];
   included:string[];
   excluded:string[];
+  whatToExpect:string[];
+  termsAndConditions:string;
+  privacyPolicy:string;
   pickup_address:PickupAddress[];
 }
 
@@ -1394,6 +1397,22 @@ useEffect(() => {
                   </div>
                 </div>
               </div>
+
+
+
+              
+             <div className="accordion-item card">
+                <h2 className="accordion-header" id="includes">
+                  <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#includesWrap" aria-expanded="true" aria-controls="includesWrap">
+                  What To Expect
+                  </button>
+                </h2>
+                <div id="includesWrap" className="accordion-collapse collapse show" aria-labelledby="includes">
+                  <div className="card-body">
+                    <TagSection  name={'whatToExpect'} type={'whatToExpect'} register={register}/>
+                  </div>
+                </div>
+              </div>   
 
             </div>
           </div>

@@ -46,7 +46,7 @@ const sidebarHeadings: SidebarHeading[] = [
     id: 7,
     heading: 'Logout',
     icon: <i className="mdi mdi-logout"></i>,
-    link: '',
+    link: '/logout',
   },
 
   {
@@ -55,20 +55,20 @@ const sidebarHeadings: SidebarHeading[] = [
     icon: <i className="mdi mdi-blur-linear"></i>,
     link: 'full-width',
   },
-  {
-    id: 5,
-    heading: 'Form',
-    icon: <i className="mdi mdi-receipt"></i>,
-    link: '',
-    children: [
-      {
-        id: 7,
-        heading: 'Form',
-        icon: <i className="mdi mdi-receipt"></i>,
-        link: '/Form',
-      },
-    ],
-  },
+  // {
+  //   id: 5,
+  //   heading: 'Form',
+  //   icon: <i className="mdi mdi-receipt"></i>,
+  //   link: 'sss',
+  //   children: [
+  //     {
+  //       id: 7,
+  //       heading: 'Form',
+  //       icon: <i className="mdi mdi-receipt"></i>,
+  //       link: '/Form',
+  //     },
+  //   ],
+  // },
 ]
 
 export { sidebarHeadings, SidebarHeading }

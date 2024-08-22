@@ -17,6 +17,7 @@ import TourList from './pages/cpanel/vendors/tours';
 import AdminSettings from './pages/cpanel/settings/AdminSettings';
 import TourListing from './pages/cpanel/tours/listing';
 import Subscription from './pages/cpanel/subscriptions';
+import VendorEdit from './pages/cpanel/vendors/edit';
 
 
 const router = createBrowserRouter([
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
             {
               path:'/cpanel/vendor-detail/:slug/info', 
               element:<VendorDetail />
+            },
+            {
+              path:'/cpanel/vendor-detail/:slug/edit', 
+              element:<VendorEdit />
             },
             {
               path:'/cpanel/vendor-detail/:slug/tours', 

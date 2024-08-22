@@ -108,7 +108,7 @@ const TourList = () =>{
                                       <a className="primary-link" href="#">{record?.name}</a>
                                       <span className="badge bg-success ms-1"><i className="mdi mdi-star align-middle"></i>4.8</span>
                                   </h5>
-                                  <p className="text-muted mb-2">{ record?.description.slice(0, 300) || 'Tour details missing'}</p>
+                                  <p className="text-muted mb-2">{ record?.description?.slice(0, 300) || 'Tour details missing'}</p>
                                   <ul className="list-inline mb-0 text-muted">
                                       <li className="list-inline-item"><i className="mdi mdi-map-marker"></i> {record?.address}</li>
                                       {

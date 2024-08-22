@@ -40,7 +40,7 @@ const AdminLayout = () => {
         <AdminHeader />
         <AdminSidebar />
         <div className="page-wrapper">
-          <div className="page-breadcrumb">
+          {/* <div className="page-breadcrumb">
             <div className="row">
               <div className="col-12 d-flex no-block align-items-center justify-content-between">
                 <h4 className="page-title">Dashboard</h4>
@@ -59,7 +59,7 @@ const AdminLayout = () => {
                 <button type="button" className="btn btn-primary ms-auto" disabled>Save Changes</button>
               </div>
             </div>
-          </div>
+          </div> */}
           <Outlet />
           <footer className="footer text-center">
             All Rights Reserved by Matrix-admin. Designed and Developed by

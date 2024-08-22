@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState } from 'react';
 import { format, parseISO } from 'date-fns';
 import { Link, Outlet, useParams } from 'react-router-dom';
 import { getRequest } from '../../../service';
-import VendorContext from './VendorContext';
 import "./vendorLayout.css";
 
 function VendorLayout() {
@@ -38,7 +37,7 @@ function VendorLayout() {
     const formattedDate = format(date, "d MMMM yyyy, HH:mm");
 
     return (
-        <VendorContext.Provider value={vendor}>
+        <>
             {error && <div className="alert alert-danger">{error}</div>}
             <div className="container-fluid">
                 <div className="row">
@@ -60,7 +59,9 @@ function VendorLayout() {
                                         </div>
                                     </div>
                                     <div className="col-md-8 align-self-center">
-                                        <Link to={`/cpanel/vendor-detail/${slug}/edit`} className="btn btn-cyan text-white mx-1">Edit</Link> 
+                                        <button type="button" className="btn btn-cyan text-white mx-1">
+                                            Edit
+                                        </button>
                                         <button type="button" className="btn btn-secondary text-white mx-1">
                                             Publish
                                         </button>
@@ -130,7 +131,7 @@ function VendorLayout() {
                     </div>
                 </div>
             </div>
-        </VendorContext.Provider>
+        </>
     );
 }
 

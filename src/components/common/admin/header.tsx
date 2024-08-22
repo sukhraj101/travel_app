@@ -4,22 +4,12 @@ export default function AdminHeader() {
   return (
     <>
       <header className="topbar" data-navbarbg="skin5">
-        <nav className="navbar top-navbar navbar-expand-md navbar-dark">
-            <div className="navbar-header" data-logobg="skin5">
-              <a className="navbar-brand" href="/cpanel">
-              <span className="logo-text ms-2">
-              <img
-                  src="./../../../../public/admin/assets/images/logo-text.png"
-                  alt="homepage"
-                  className="light-logo"
-                  />
-              </span>
-              </a>
-              <a
-                  className="nav-toggler waves-effect waves-light d-block d-md-none"
-                  href="#"
-                  ><i className="ti-menu ti-close"></i></a>
-            </div>
+        <nav className="navbar top-navbar navbar-expand-md navbar-light">
+            
+
+
+
+            
             <div
               className="navbar-collapse collapse"
               id="navbarSupportedContent"

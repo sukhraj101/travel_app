@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { getRequest } from "../../../service";
 import { useParams } from "react-router-dom";
+import VendorContext from './VendorContext';
 interface Vendor {
   id: number;
   logo: string;
@@ -12,38 +13,10 @@ interface Vendor {
 }
 const Details = () => {
 
-  const { slug } = useParams();
-  const [loading, setLoading] = useState(false);
-  const [vendor, setVendor] = useState<Vendor>([]);
-  const [error, setError] = useState('');
-
+  // const { slug } = useParams();
+  const vendor = useContext(VendorContext);
   console.log(vendor)
-
-  const fetchVendorDetails = useCallback(() => {
-      setLoading(true);
-      getRequest(`v1/vendor/${slug}/details`)
-        .then(async (res:{
-          data:Vendor
-        }) => {
-          const data = await res.data;
-          setVendor(data); 
-        })
-        .catch((e) => {
-          console.log(e);
-          setError("Error fetching vendor details");
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-  }, [slug]);
-
-  useEffect(() => {
-      fetchVendorDetails();
-  }, [fetchVendorDetails]);
-
-  if (loading) {
-    return <div>loading</div>
-  }
+ 
   return (
     <>
       <div className="card">

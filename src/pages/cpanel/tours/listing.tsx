@@ -111,7 +111,7 @@ const getTours = () => {
                            {
                             records && records.map((record, index) => (
                                 <>
-                                 <div className="candidate-list-box tour-card mt-4" key={index}>
+                                 <div className="candidate-list-box custom-card tour-card mt-4" key={index}>
                               <div className="p-4 card-body">
                                   <div className="align-items-center row">
                                       <div className="col-auto">

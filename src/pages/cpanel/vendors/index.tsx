@@ -13,21 +13,20 @@ interface Vendor {
 }
 const VendorListing = () => {
   const [vendors, setVendors] = useState<Vendor[]>([]);
-  const [status, setStatus] = useState<number>(0);
-
-
+  const [status, setStatus] = useState<number>(0); 
+  
   useEffect(() => {
-    getVendors();
-}, []);
-const getVendors = () => {
-  getRequest(`v1/vendor/listing?status=${status}skip=0&limit=1000`)
-      .then((res: { data: Vendor[] }) => {
-        setVendors(res.data);
-      })
-      .catch((err: unknown) => {
-          console.log(err);
-      });
-};
+      getVendors();
+  }, []);
+  const getVendors = () => {
+    getRequest(`v1/vendor/listing?status=${status}skip=0&limit=1000`)
+        .then((res: { data: Vendor[] }) => {
+          setVendors(res.data);
+        })
+        .catch((err: unknown) => {
+            console.log(err);
+        });
+  };
 const filteredVendor =status !== 10 ? vendors.filter((v) => v?.status == status) : vendors;
   return (
      <>
