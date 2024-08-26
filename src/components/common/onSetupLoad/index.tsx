@@ -4,7 +4,8 @@ import Box from './box';
 import './index.css'; 
 import { postRequest } from '../../../service';
 const OnSetupLoad = () => {
- 
+const [client,setClient] =useState([]);
+const [loading,setLoading] =useState<boolean>(false);
 
  
 useEffect(() =>{
@@ -28,7 +29,7 @@ useEffect(() =>{
     fetchWebData();
 },[]);
 
-  
+  console.log(client,loading);
   return (
     <>
     <div className="main">

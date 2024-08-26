@@ -5,28 +5,42 @@ import { getRequest } from '../../../service';
 import VendorContext from './VendorContext';
 import "./vendorLayout.css";
 
+// Define the interface for the Vendor object
+interface Vendor {
+    banner: string;
+    logo: string;
+    name: string;
+    slug: string;
+    phone_number: string;
+    pincode: string;
+    address: string;
+    city?: { name: string };
+    state?: { name: string };
+    country?: { name: string };
+}
+
 function VendorLayout() {
-    const { slug } = useParams();
+    const { slug } = useParams<{ slug: string }>();
     const [loading, setLoading] = useState(false);
-    const [vendor, setVendor] = useState(null); // Changed initial state to null
+    const [vendor, setVendor] = useState<Vendor | null>(null); // Define Vendor type or null
     const [error, setError] = useState('');
 
-    console.log(vendor)
+    console.log(vendor, loading);
 
     const fetchVendorDetails = useCallback(() => {
         setLoading(true);
         getRequest(`v1/vendor/${slug}/details`)
-          .then(async (res) => {
-            const data = await res.data;
-            setVendor(data); 
-          })
-          .catch((e) => {
-            console.log(e);
-            setError("Error fetching vendor details");
-          })
-          .finally(() => {
-            setLoading(false);
-          });
+            .then((res) => {
+                const data = res.data;
+                setVendor(data);
+            })
+            .catch((e) => {
+                console.log(e);
+                setError("Error fetching vendor details");
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     }, [slug]);
 
     useEffect(() => {
@@ -132,6 +146,5 @@ function VendorLayout() {
             </div>
         </VendorContext.Provider>
     );
-}
-
-export default VendorLayout;
+} 
+export default VendorLayout; 

@@ -7,8 +7,11 @@ import NotFound from './pages/notfound/notfound';
 import OnSetupLoad from './components/common/onSetupLoad'; 
 import Loader from './components/common/admin/components/loader';
 
+interface Client {
+  status:number; 
+}
 const App = () => {
-  const [client,setClient] = useState({});
+  const [client,setClient] = useState<Client>();
   const [isDomain,setIsDomain] = useState(false);
   const [loading,setLoading] = useState(true);
     useEffect(() => {
@@ -31,7 +34,7 @@ const App = () => {
          {
          loading ? <Loader /> : (
             isDomain ?  (
-                client?.status === 1 ? (
+              client&& client?.status === 1 ? (
                   <RouterProvider router={router} />
                 ) : (
                 <OnSetupLoad/> 

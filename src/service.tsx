@@ -28,8 +28,7 @@ const postRequest = async (url: string, params:object, file: number = 0) => {
     loginDetails,
     {
       headers: headers,
-    },
-    []
+    }
   );
   return response.data;
 };

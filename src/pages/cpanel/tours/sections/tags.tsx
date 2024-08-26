@@ -98,7 +98,7 @@ const TagSection: React.FC<TagSectionProps> = ({register, type,name }) => {
     setSearchTerm(e.target.value);
   };
 
-  const filteredRecords = records.filter((record) =>
+  const filteredRecords = records && records?.filter((record) =>
     record.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 

@@ -1,10 +1,11 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import {  Link, useParams } from 'react-router-dom';
 import { getRequest, postRequest } from '../../../service';
 interface Tours {
     id: number;
     name: string;
     vendor_id:number;
+    thumbnail:string;
 }
 const TourList = () =>{
     const { slug } = useParams();
@@ -14,8 +15,8 @@ const TourList = () =>{
     const [total,setTotal] = useState<number>(0);
     const [page,setPage] = useState<number>(1);
     const [skip,setSkip] = useState<number>(0);
-    const [limit,setlimit] = useState<number>(10);
-    console.log(loading);
+    const limit  = 20;
+    console.log(loading,page);
     const createNewTour = () => { 
         setLoading(true);
         postRequest(`v1/vendor/${slug}/product/store`, {
@@ -42,6 +43,8 @@ const TourList = () =>{
                 setRecords(res?.data);
                 console.log(res.data);
                 setTotal(res?.meta?.total);
+                setPage(1);
+                setSkip(0);
             }
           })
           .catch(() => alert("Error creating category"))
@@ -52,6 +55,7 @@ const TourList = () =>{
   
   useEffect(() => {
     getTours();
+
   }, [getTours]); 
 
   return (
@@ -92,7 +96,7 @@ const TourList = () =>{
             </div>
             <div className="candidate-list">
               {loading && 'Loading...'}
-                {records && records.map((record, index) => (
+                {records && records.map((record:Tours, index:number) => (
                   <>
                     <div className="candidate-list-box tour-card mt-4" key={index}>
                       <div className="p-4 card-body">

@@ -1,8 +1,8 @@
-import React from 'react'
+ 
 
 const LandingPage = () => {
   return (
-  <div>dd</div>
+  <div>Loading..</div>
   )
 }
 export default LandingPage

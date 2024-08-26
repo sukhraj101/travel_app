@@ -4,12 +4,7 @@ export default function AdminHeader() {
   return (
     <>
       <header className="topbar" data-navbarbg="skin5">
-        <nav className="navbar top-navbar navbar-expand-md navbar-light">
-            
-
-
-
-            
+        <nav className="navbar top-navbar navbar-expand-md navbar-light"> 
             <div
               className="navbar-collapse collapse"
               id="navbarSupportedContent"
@@ -47,21 +42,7 @@ export default function AdminHeader() {
                           <a className="dropdown-item" href="#">Something else here</a>
                         </li>
                     </ul>
-                  </li>
-                  {/* <li className="nav-item search-box">
-                    <a
-                        className="nav-link waves-effect waves-dark"
-                        href="#"
-                        ><i className="mdi mdi-magnify fs-4"></i></a>
-                    <form className="app-search position-absolute">
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Search &amp; enter"
-                          />
-                        <a className="srh-btn"><i className="mdi mdi-window-close"></i></a>
-                    </form>
-                  </li> */}
+                  </li> 
               </ul>
               <ul className="navbar-nav float-end">
                   <li className="nav-item dropdown">

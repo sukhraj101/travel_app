@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { loginFun } from "../service";
+import { loginFun } from "./../../service";
 interface LoginFormInputs {
   email: string;
   password: string;

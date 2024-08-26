@@ -14,6 +14,7 @@ const SearchLocation: React.FC<SearchLocationProps> = ({
   setLocation,
   setAddress,
   setError, 
+  setSearchLocation,
   setValue,
   register,
   errors,
@@ -50,25 +51,23 @@ const SearchLocation: React.FC<SearchLocationProps> = ({
     } else {
       setError('Geolocation is not supported by this browser.');
     }
-  }, [apiKey, setLocation, setAddress, setError, setValue]);
+  }, [apiKey, setLocation, setError, setValue]);
 
-  const handleAddressSearch = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const target = e.target as typeof e.target & {
-      value: { value: string };
-    };
+  const handleAddressSearch = (e: FormEvent<HTMLInputElement>) => {
+    const inputValue = e.currentTarget.value.trim();
+    if (!inputValue) return;
+
     fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
-        target.value.value
+        inputValue
       )}&key=${apiKey}`
     )
       .then((response) => response.json())
       .then((data) => {
         if (data.status === 'OK' && data.results.length > 0) {
           const { lat, lng } = data.results[0].geometry.location;
-          console.log(lat, lng)
-        //   setSearchLocation({ latitude: lat, longitude: lng });
-        //   setAddress(data.results[0].formatted_address);
+          setSearchLocation({ latitude: lat, longitude: lng });
+          setAddress(data.results[0].formatted_address);
         } else {
           alert('Unable to find address.');
         }
@@ -85,7 +84,7 @@ const SearchLocation: React.FC<SearchLocationProps> = ({
         <input
           {...register('address', { required: 'This field is required' })}
           type="text"
-          onChange={(e) => handleAddressSearch(e)}
+          onChange={handleAddressSearch}
           placeholder="Enter Business Address"
         />
         {errors.address && <span className="error">{errors.address.message}</span>}

@@ -1,15 +1,6 @@
-  import React, { useCallback, useEffect, useState } from 'react'
+  import { useCallback, useEffect, useState } from 'react'
 import "./subscription.css"
-import { getRequest, getRequestGod } from '../../../service';
-
-
-
-
-
-
-
-
-
+import { getRequestGod } from '../../../service'; 
 interface Package {
     id: number;
     title: string;
@@ -24,9 +15,7 @@ interface Package {
     default_member:number;
     order_limit_per_month:number;
     addional_rate_per_order:string;
-}
- 
-
+} 
 const Subscription = () => {
     const [subscription, setSubscription] = useState<Package[]>([]);
     const [duration, setDuration] = useState<string>('monthly');

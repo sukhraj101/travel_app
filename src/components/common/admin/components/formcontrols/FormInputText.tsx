@@ -1,12 +1,12 @@
-import React from 'react';
-import { Form } from 'react-bootstrap';
-import { FieldValues, RegisterOptions, UseFormRegister, FieldError } from 'react-hook-form';
+ 
+ 
+import { FieldValues, Path, UseFormRegister, FieldError } from 'react-hook-form'; 
 
 interface FormInputTextProps<T extends FieldValues> {
   label: string;
-  name: keyof T;
+  name: Path<T>; // Use Path<T> instead of keyof T for type-safe form fields
   register: UseFormRegister<T>;
-  errors: Record<string, FieldError> | undefined;
+  errors?: Partial<Record<Path<T>, FieldError>>; // Adjusted to use Path<T>
   placeholder?: string;
 }
 
@@ -14,21 +14,21 @@ const FormInputText = <T extends FieldValues>({
   label,
   name,
   register,
-  errors,
-  placeholder = ''
+  errors = {},
+  placeholder = '',
 }: FormInputTextProps<T>) => {
   return (
-    <Form.Group className="mb-3" controlId={`formGroup${String(name)}`}>
-      <Form.Label>{label}</Form.Label>
-      <Form.Control
+    <div className="mb-3 form-group" id={`formGroup${String(name)}`}>
+      <label>{label}</label>
+      <input className='form-control'
         type="text"
-        {...register(name as string, { required: "This field is required" } as RegisterOptions)}
+        {...register(name, { required: 'This field is required' })}
         placeholder={placeholder}
       />
-      {errors?.[name as string] && (
-        <p className='text-danger text-right'>{errors[name as string]?.message}</p>
+      {errors[name] && (
+        <p className="text-danger text-right">{errors[name]?.message}</p>
       )}
-    </Form.Group>
+    </div>
   );
 };
 

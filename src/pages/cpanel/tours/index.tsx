@@ -7,14 +7,12 @@ import { getRequest, postRequest } from "../../../service";
 import UploadFile from "../../../components/common/admin/components/formcontrols/UploadFile"; 
 import TagSection from "./sections/tags";
 import Locations from "./sections/locations";
-import { useParams } from "react-router-dom";
-import { loadingButtonClasses } from "@mui/lab";
- 
+import { useParams } from "react-router-dom"; 
 
 interface LoginFormInputs {
   name: string;
   thumbnail: string | null;
-  description: number;
+  description: string;
   short_description: string;
   country: string;
   state: string;
@@ -24,7 +22,7 @@ interface LoginFormInputs {
   longitude: string;
   translations: Translation[]; 
   include_services: IncludeService[];
-  categories: number[];
+  categories: string[];
   languages: number[];
   images: string[];
   price_type: string;
@@ -37,15 +35,9 @@ interface LoginFormInputs {
   whatToExpect:string[];
   termsAndConditions:string;
   privacyPolicy:string;
-  pickup_address:PickupAddress[];
+  pickup_address:PickupAddress[]; 
 }
-
-interface ErrorMessage {
-  has: boolean;
-  type: "warning" | "danger" | "success";
-  message: string;
-}
-
+ 
 interface Country {
   id: number;
   name: string;
