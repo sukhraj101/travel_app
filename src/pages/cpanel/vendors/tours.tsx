@@ -2,19 +2,24 @@ import { useCallback, useEffect, useState } from 'react'
 import {  Link, useParams } from 'react-router-dom';
 import { getRequest, postRequest } from '../../../service';
 interface Tours {
-    id: number;
-    name: string;
-    vendor_id:number;
-    thumbnail:string;
+  id: number;
+  name: string;
+  vendor_id: number;
+  thumbnail: string;
+  description?: string;
+  address?: string;
+  price_type?: string;
+  children_price?: number;
+  adult_price?: number;
 }
 const TourList = () =>{
     const { slug } = useParams();
-    const [loading,setLoading] = useState(false);
-    const [records,setRecords] = useState<Tours>();
+    const [loading, setLoading] = useState(false);
+    const [records, setRecords] = useState<Tours[]>([]);
 
-    const [total,setTotal] = useState<number>(0);
-    const [page,setPage] = useState<number>(1);
-    const [skip,setSkip] = useState<number>(0);
+    const [total, setTotal] = useState<number>(0);
+    const [page, setPage] = useState<number>(1);
+    const [skip, setSkip] = useState<number>(0);
     const limit  = 20;
     console.log(loading,page);
     const createNewTour = () => { 

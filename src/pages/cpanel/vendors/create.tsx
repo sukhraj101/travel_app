@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useForm, SubmitHandler, FieldValues } from 'react-hook-form'; 
+import { useForm, SubmitHandler } from 'react-hook-form'; 
 import { getRequest, postRequest } from '../../../service'; 
 import UploadFile from '../../../components/common/admin/components/formcontrols/UploadFile';
 
@@ -58,6 +58,8 @@ const CreateVendor: React.FC = () => {
         getCountry();
     }, []);
 
+    console.log(loading, error)
+
  
     const getCountry = () => {
         getRequest('v1/countries?skip=0&limit=1000')
@@ -103,7 +105,11 @@ const CreateVendor: React.FC = () => {
                   window.location.href = '/cpanel/vendor/listing';
                 }
               })
-              .catch(() => setErrorMessage("Error creating category"))
+              .catch(() => setErrorMessage({
+                has: true,
+                type: 'danger',
+                message: "Error creating category"
+              }))
               .finally(() => {
                 setLoading(false);
               });
@@ -249,19 +255,19 @@ const CreateVendor: React.FC = () => {
                                 <div className="form-group row">
                                     <label htmlFor="country" className="col-sm-3 control-label col-form-label"><span>Select Country</span></label>
                                     <div className="col-sm-9">
-                                        <select
+                                    <select
                                             className="form-control"
-                                            id="country"  
+                                            id="country"
                                             {...register('country', {
                                                 required: 'Country is required'
                                             })}
-                                            onChange={(e:event) => { 
-                                                setValue('country',e.target.value);
-                                                getState()
+                                            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+                                                setValue('country', parseInt(e.target.value, 10));
+                                                getState();
                                             }}
                                         >
-                                        <option value="">Select Country</option>
-                                         {country.map((c) => (<option key={c.id} value={c.id}>{c.name}</option>))}
+                                            <option value="">Select Country</option>
+                                            {country.map((c) => (<option key={c.id} value={c.id}>{c.name}</option>))}
                                         </select>
                                         {errors.country && <p className='text-danger text-right'>{errors.country.message}</p>}
                                     </div>
@@ -270,20 +276,20 @@ const CreateVendor: React.FC = () => {
                                 <div className="form-group row">
                                     <label htmlFor="state" className="col-sm-3 control-label col-form-label"><span>Select State</span></label>
                                     <div className="col-sm-9">
-                                        <select
-                                            className="form-control"
-                                            id="state"  
-                                            {...register('state', {
-                                                required: 'state is required'
-                                            })}
-                                            onChange={(e:event) => { 
-                                                setValue('state',e.target.value);
-                                                getCity()
-                                            }}
-                                        >
-                                         <option value="">Select State</option>
-                                         {state.map((c) => (<option key={c.id} value={c.id}>{c.name}</option>))}
-                                        </select>
+                                    <select
+                                        className="form-control"
+                                        id="state"
+                                        {...register('state', {
+                                            required: 'State is required'
+                                        })}
+                                        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+                                            setValue('country', parseInt(e.target.value, 10));
+                                            getCity();
+                                        }}
+                                    >
+                                        <option value="">Select State</option>
+                                        {state.map((s) => (<option key={s.id} value={s.id}>{s.name}</option>))}
+                                    </select>
                                         {errors.state && <p className='text-danger text-right'>{errors.state.message}</p>}
                                     </div>
                                 </div>
@@ -291,16 +297,16 @@ const CreateVendor: React.FC = () => {
                                 <div className="form-group row">
                                     <label htmlFor="city" className="col-sm-3 control-label col-form-label"><span>Select city</span></label>
                                     <div className="col-sm-9">
-                                        <select
-                                            className="form-control"
-                                            id="city"  
-                                            {...register('city', {
-                                                required: 'city is required'
-                                            })}
-                                        >
-                                         <option value="">Select city</option>
-                                         {city.map((c) => (<option key={c.id} value={c.id}>{c.name}</option>))}
-                                        </select>
+                                    <select
+                                        className="form-control"
+                                        id="city"
+                                        {...register('city', {
+                                            required: 'City is required'
+                                        })}
+                                    >
+                                        <option value="">Select City</option>
+                                        {city.map((c) => (<option key={c.id} value={c.id}>{c.name}</option>))}
+                                    </select>
                                         {errors.city && <p className='text-danger text-right'>{errors.city.message}</p>}
                                     </div>
                                 </div>
@@ -428,7 +434,6 @@ const CreateVendor: React.FC = () => {
 };
 
 export default CreateVendor;
-function getCountry() {
-    throw new Error('Function not implemented.');
-}
-
+// function getCountry() {
+//     throw new Error('Function not implemented.');
+// }

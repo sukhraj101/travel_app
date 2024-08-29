@@ -1,31 +1,33 @@
 .tour-card {
     overflow: hidden;
     border-radius: 6px;
-    background-color: #fff;
-    border: 1px solid #0000002d;
-    box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+    background-color: #ffffff;
+    border: 1px solid #7a7a7a2d;
+    box-shadow: none;
 }
-
+.tour-card .tour-tags-wrap {
+    margin-left: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-self: flex-end;
+} 
+.tour-card .tour-tags-wrap .badge {
+    display: flex;
+    align-items: center;
+    padding-inline: 6px;
+}
 .avatar-md {
     height: 5rem;
     width: 5rem;
 }
-
 .fs-19 {
     font-size: 19px;
 }
-
 .primary-link {
     color: #314047;
     -webkit-transition: all .5s ease;
     transition: all .5s ease;
 }
-
-a {
-    color: #02af74;
-    text-decoration: none;
-}
-
 .bookmark-post .favorite-icon a, .job-box.bookmark-post .favorite-icon a {
     background-color: #da3746;
     color: #fff;
@@ -44,11 +46,9 @@ a {
     -webkit-transition: all .5s ease;
     transition: all .5s ease;
 }
-
-
 .candidate-list-box .favorite-icon {
     position: absolute;
-    right: 22px;
+    right: 24px;
     top: 22px;
 }
 .fs-14 {
@@ -57,4 +57,7 @@ a {
 .bg-soft-secondary {
     background-color: rgba(116,120,141,.15)!important;
     color: #74788d!important;
+}
+.pagination.job-pagination {
+    gap: 6px;
 }

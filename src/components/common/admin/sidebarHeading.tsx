@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import React from 'react'
 
 interface SidebarHeading {
@@ -71,4 +72,5 @@ const sidebarHeadings: SidebarHeading[] = [
   // },
 ]
 
-export { sidebarHeadings, SidebarHeading }
+export { sidebarHeadings };export type { SidebarHeading };
+

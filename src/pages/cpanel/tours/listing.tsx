@@ -9,10 +9,14 @@ interface Tours {
   address:string;
   price_type:string;
   category:string[];
+  thumbnail?: string;
+  children_price?: number;
+  adult_price?: number;
 }
 const TourListing = () =>{
-  const [loading,setLoading] = useState(false);
-  const [records,setRecords] = useState<Tours>();
+  const [loading, setLoading] = useState(false);
+  const [records, setRecords] = useState<Tours[]>([]);
+  console.log(loading);
   useEffect(() => {
     getTours();
 },[]);
@@ -40,7 +44,7 @@ const getTours = () => {
             <div className="col-9">
               <div className="justify-content-center row mt-3">
                 <div className="col-lg-12">
-                    <div className="candidate-list-widgets mb-4">
+                    <div className="candidate-list-widgets mb-3">
                         <form action="#" className="">
                             <div className="g-2 row">
                                 <div className="col-lg-3">
@@ -70,9 +74,9 @@ const getTours = () => {
                                         </select>
                                     </div>
                                 </div>
-                                <div className="col-lg-2">
+                                <div className="col-lg-2 d-flex">
                                   <a className="btn btn-primary ms-1 px-4" href="#"><i className="uil uil-filter"></i> Filter</a>
-                                  <a className="btn btn-success ms-2" href="#"><i className="uil uil-cog"></i> Advance</a>
+                                  <a className="btn btn-secondary ms-2 flex-grow-1" href="#"><i className="uil uil-cog"></i> Advance</a>
                                 </div>
                             </div>
                         </form>
@@ -109,7 +113,7 @@ const getTours = () => {
                       </div>
                       <div className="candidate-list">
                            {
-                            records && records.map((record, index) => (
+                            records && records.map((record: Tours, index: number) => (
                                 <>
                                  <div className="candidate-list-box custom-card tour-card mt-4" key={index}>
                               <div className="p-4 card-body">
@@ -119,11 +123,11 @@ const getTours = () => {
                                               <a href="#"><img src={record?.thumbnail} alt="" className="avatar-md img-thumbnail rounded-circle" /></a>
                                           </div>
                                       </div>
-                                      <div className="col-lg-5">
+                                      <div className="col-lg-6">
                                           <div className="candidate-list-content mt-3 mt-lg-0">
                                               <h5 className="fs-19 mb-0">
                                                   <a className="primary-link" href="#">{record?.name}</a>
-                                                  <span className="badge bg-success ms-1"><i className="mdi mdi-star align-middle"></i>4.8</span>
+                                                  {/* <span className="badge bg-success ms-1"><i className="mdi mdi-star align-middle"></i>4.8</span> */}
                                               </h5>
                                               <p className="text-muted mb-2">Project Manager</p>
                                               <ul className="list-inline mb-0 text-muted">
@@ -142,13 +146,13 @@ const getTours = () => {
                                               </ul>
                                           </div>
                                       </div>
-                                      <div className="col-lg-4">
-                                          <div className="mt-2 mt-lg-0 d-flex flex-wrap align-items-start gap-1">
-                                            {
-                                              record?.category.map((cate,index)=> (
-                                                <span className="badge bg-soft-secondary fs-14 mt-1" key={index}>{cate}</span>
-                                              ))
-                                            }
+                                      <div className="col-lg-4 tour-tags-wrap">
+                                          <div className="mt-2 mt-lg-0 d-flex flex-wrap align-items-strech gap-1">
+                                                {
+                                                record?.category.map((cate: string,index: number)=> (
+                                                    <span className="badge bg-soft-secondary fs-14" key={index}>{cate}</span>
+                                                ))
+                                                }
                                                <Link className='btn btn-primary pull-right' to={`/cpanel/vendor-detail/${record?.vendor_id}/tour/${record?.id}/edit`}>Edit</Link> 
                                           </div>
                                       </div>
@@ -174,7 +178,7 @@ const getTours = () => {
                       <nav aria-label="Page navigation example">
                           <div className="pagination job-pagination mb-0 justify-content-center">
                               <li className="page-item disabled">
-                                  <a className="page-link" tabindex="-1" href="#"><i className="mdi mdi-chevron-double-left fs-15"></i></a>
+                                  <a className="page-link" tabIndex={-1} href="#"><i className="mdi mdi-chevron-double-left fs-15"></i></a>
                               </li>
                               <li className="page-item active"><a className="page-link" href="#">1</a></li>
                               <li className="page-item"><a className="page-link" href="#">2</a></li>

@@ -1,4 +1,4 @@
-const url = import.meta.env.VITE_PUBLIC_URL
+// const url = import.meta.env.VITE_PUBLIC_URL
 
 const TourDetails = ({
     product

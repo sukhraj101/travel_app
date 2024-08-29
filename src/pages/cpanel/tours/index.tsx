@@ -9,6 +9,12 @@ import TagSection from "./sections/tags";
 import Locations from "./sections/locations";
 import { useParams } from "react-router-dom"; 
 
+
+interface Languages {
+  lang_id: number;
+  language_name: string;
+}
+
 interface LoginFormInputs {
   name: string;
   thumbnail: string | null;
@@ -62,6 +68,7 @@ interface Categories {
   id: number;
   name: string;
   category: {
+    map(arg0: (sub: any) => import("react/jsx-runtime").JSX.Element): import("react").ReactNode;
     id: number;
     name: string;
     category: {
@@ -315,20 +322,19 @@ useEffect(() => {
     language: Languages
   ) => {
     if (e.target?.checked) {
-      const isDuplicate = translationFields.some(field => field.language_id === language.language_id);
+      const isDuplicate = translationFields.some(field => field.language_id === e.target.value);
       if (!isDuplicate) {
         appendTranslation({
           name: "",
           description: "",
           short_description: "",
           language_id: e.target.value,
-          language_name: language?.language_name,
-        })
+          language_name: language.language_name,
+        });
       }
-    
     } else {
       const index = translationFields.findIndex(
-        (t) => t.language_id == e.target.value
+        (t) => t.language_id === e.target.value
       );
       removeTranslation(index);
     }
@@ -367,11 +373,36 @@ useEffect(() => {
     }
   };
   
+  // const addressIds:string[] = pickupFields.map((p) => p.address_id);
+  const addressIds: string[] = pickupFields.map((p) => p.address_id.toString());
 
-
-  
-  const addressIds:string[] = pickupFields.map((p) => p.address_id);
- 
+  type FormFieldNames =
+  | "name"
+  | "thumbnail"
+  | "description"
+  | "short_description"
+  | "country"
+  | "state"
+  | "city"
+  | "address"
+  | "latitude"
+  | "longitude"
+  | "translations"
+  | "include_services"
+  | "categories"
+  | "languages"
+  | "images"
+  | "price_type"
+  | "people_limit"
+  | "children_price"
+  | "adult_price"
+  | "tags"
+  | "included"
+  | "excluded"
+  | "whatToExpect"
+  | "termsAndConditions"
+  | "privacyPolicy"
+  | `pickup_address.${number}.isfree`
 
   const handleImageUpload = (name: string, url: string) => {
     switch (name) {
@@ -384,7 +415,7 @@ useEffect(() => {
         break;
 
       default:
-        setValue(name, url);
+        setValue(name as FormFieldNames, url);
         break;
     }
   };
@@ -1179,7 +1210,7 @@ useEffect(() => {
                       )}
                       <div className="tour-banner">
                         <div className="remove-image"></div>
-                        <img src={watch('thumbnail')} alt="Gallery Image 0" />
+                        <img src={watch('thumbnail') ?? undefined} alt="Gallery Image 0" />
                       </div>
                     </div>
                                   
@@ -1244,7 +1275,7 @@ useEffect(() => {
                           <br />
                           <div className="col-md-12">
                             {cate?.category &&
-                              cate?.category?.map((sub) => (
+                              cate?.category?.map((sub:Categories) => (
                                 <>
                                   <div className="form-check mt-2 mb-3" key={sub.id}>
                                     <input
@@ -1263,7 +1294,7 @@ useEffect(() => {
                                       {sub.name}
                                     </label>
                                       {sub?.category &&
-                                        sub?.category?.map((child) => (
+                                        sub?.category?.map((child:Categories) => (
                                         <>
                                           <div
                                             className="form-check mt-2 mb-3"

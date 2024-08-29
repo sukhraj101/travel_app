@@ -378,29 +378,12 @@ th {
   border-width: 0;
 }
 
-// Forms
-//
-// 1. Allow labels to use `margin` for spacing.
-
 label {
-  display: inline-block; // 1
+  display: inline-block;
 }
-
-// Remove the default `border-radius` that macOS Chrome adds.
-// See https://github.com/twbs/bootstrap/issues/24093
 
 button {
-  // stylelint-disable-next-line property-disallowed-list
   border-radius: 0;
-}
-
-// Work around a Firefox bug where the transparent `button` background
-// results in a loss of the default `button` focus styles.
-// Credit https://github.com/suitcss/base/
-
-button:focus {
-  outline: dotted 1px;
-  outline: -webkit-focus-ring-color auto 5px;
 }
 
 // 1. Remove the margin in Firefox and Safari
@@ -410,7 +393,7 @@ button,
 select,
 optgroup,
 textarea {
-  margin: 0; // 1
+  margin: 0;
   font-family: inherit;
   @include font-size(inherit);
   line-height: inherit;

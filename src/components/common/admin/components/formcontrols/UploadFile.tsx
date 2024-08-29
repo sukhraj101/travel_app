@@ -6,7 +6,7 @@ interface UploadFileProps {
     path: string;
     type: string;
     name: string; 
-    val: string;
+    val?: string | null;
 }
 
 const UploadFile: React.FC<UploadFileProps> = ({ 
@@ -36,7 +36,7 @@ const UploadFile: React.FC<UploadFileProps> = ({
                 } else {
                     setError(data.message || 'Upload failed');
                 }
-            } catch (err: any) {
+            } catch (err: unknown) {
                 console.error("Error uploading file", err);
                 setError("Error uploading file");
             } finally {

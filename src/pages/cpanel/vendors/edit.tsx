@@ -1,6 +1,6 @@
-import { useCallback, useContext, useEffect, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react';
 import VendorContext from './VendorContext';
-import { SubmitHandler, useForm, Path } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { getRequest, postRequest } from '../../../service';
 import UploadFile from '../../../components/common/admin/components/formcontrols/UploadFile';
 
@@ -10,7 +10,7 @@ interface LoginFormInputs {
     phone_number: number;
     intro: string;
     banner: string;
-    logo: FileList;
+    logo: string;
     country: number;
     state: number;
     city: number;
@@ -23,7 +23,7 @@ interface LoginFormInputs {
 interface Categories {
     id: number;
     name: string;
-    category?: Categories[];  // Assuming nested categories
+    category?: Categories[];
 }
 
 interface ErrorMessage {
@@ -47,13 +47,30 @@ interface City {
     name: string;
 }
 
+interface Vendor {
+    id: number;
+    name: string;
+    email: string;
+    phone_number: number;
+    description: string;
+    logo: string;
+    banner: string;
+    country_id: number;
+    state_id: number;
+    city_id: number;
+    address: string;
+    latitude: string;
+    longitude: string;
+    categories: number[];
+}
+
 const VendorEdit = () => {
-    const vendor = useContext(VendorContext);
+    const vendor = useContext<Vendor | null>(VendorContext);
     const [country, setCountry] = useState<Country[]>([]);
     const [state, setState] = useState<State[]>([]);
-    const [city, setCity] = useState<City[]>([]); 
+    const [city, setCity] = useState<City[]>([]);
     const [categories, setCategories] = useState<Categories[]>([]);
-    const [loading, setLoading] = useState<boolean>(false); 
+    const [loading, setLoading] = useState<boolean>(false);
     const { register, reset, setValue, handleSubmit, watch, formState: { errors } } = useForm<LoginFormInputs>();
 
     const [error, setErrorMessage] = useState<ErrorMessage>({
@@ -61,6 +78,8 @@ const VendorEdit = () => {
         type: 'warning',
         message: ''
     });
+
+    console.log(country, state, city, error);
 
     useEffect(() => {
         getCountry();
@@ -75,7 +94,7 @@ const VendorEdit = () => {
           .catch((err: unknown) => {
             console.log(err);
           });
-      };
+    };
 
     const getCategories = () => {
         getRequest("v1/category/listing?skip=0&limit=50&tree=1&parent=0")
@@ -85,7 +104,7 @@ const VendorEdit = () => {
           .catch((err: unknown) => {
             console.log(err);
           });
-      };
+    };
 
     useEffect(() => {
         if (vendor) {
@@ -93,27 +112,27 @@ const VendorEdit = () => {
             setValue('email', vendor.email);
             setValue('phone_number', vendor.phone_number);
             setValue('address', vendor.address);
-            setValue('latitude', vendor.latitude); 
+            setValue('latitude', vendor.latitude);
             setValue('intro', vendor.description);
             setValue('longitude', vendor.longitude);
             setValue('logo', vendor.logo);
             setValue('banner', vendor.banner);
             setValue('country', vendor.country_id);
             setValue('state', vendor.state_id);
-            setValue('city', vendor.city_id); 
+            setValue('city', vendor.city_id);
             setValue('categories', vendor.categories);
         }
     }, [setValue, vendor]);
 
-    const countryID = watch('country'); 
-    const stateID = watch('state'); 
+    const countryID = watch('country');
+    const stateID = watch('state');
 
     const getState = useCallback(() => {
         if (countryID) {
             getRequest(`v1/states?skip=0&limit=1000&country_id=${countryID}`)
             .then((res: { data: State[] }) => {
-              setState(res.data); 
-              setValue('state', vendor?.state_id ?? res.data[0]?.id);  // Fallback if vendor data not available
+              setState(res.data);
+              setValue('state', vendor?.state_id ?? res.data[0]?.id); // Fallback if vendor data not available
             })
             .catch((err: unknown) => {
               console.log(err);
@@ -125,8 +144,8 @@ const VendorEdit = () => {
         if (stateID) {
             getRequest(`v1/cities?skip=0&limit=1000&state_id=${stateID}`)
             .then((res: { data: City[] }) => {
-              setCity(res.data); 
-              setValue('city', vendor?.city_id ?? res.data[0]?.id);  // Fallback if vendor data not available
+              setCity(res.data);
+              setValue('city', vendor?.city_id ?? res.data[0]?.id); // Fallback if vendor data not available
             })
             .catch((err: unknown) => {
               console.log(err);
@@ -143,8 +162,8 @@ const VendorEdit = () => {
     }, [stateID, getCity]);
 
     const onSubmit: SubmitHandler<LoginFormInputs> = (data) => {
-        console.log(data); 
-        setLoading(true); 
+        console.log(data);
+        setLoading(true);
         postRequest(`v1/vendor/${vendor?.id}/update`, data)
             .then((res) => {
                 if (res.success) {
@@ -163,11 +182,11 @@ const VendorEdit = () => {
             });
     };
 
-    const handleImageUpload = (name: keyof LoginFormInputs, url: string) => {
+    const handleImageUpload = (name: string, url: string) => {
         console.log(name);
-        setValue(name, url);
+        setValue(name as keyof LoginFormInputs, url); // Type assertion to match LoginFormInputs
     };
-    
+
     return (
         <div className="card custom-card">
             <div className="card-body">
@@ -206,9 +225,9 @@ const VendorEdit = () => {
                                         </label>
                                         <div className="col-sm-9">
                                             <UploadFile 
-                                                onUpload={handleImageUpload}
+                                                onUpload={handleImageUpload} // Ensure this matches UploadFile prop type
                                                 name="banner"
-                                                path="vendors/" 
+                                                path="vendors/"
                                                 type="category"
                                                 val={watch("banner")}
                                             />

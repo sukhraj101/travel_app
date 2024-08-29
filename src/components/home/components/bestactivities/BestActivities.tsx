@@ -26,7 +26,7 @@ const BestActivities = () => {
     const getTours = () => {
         setLoading(true);
         getRequest(`v1/product/listing`)
-            .then((res) => {
+            .then((res: { status: string; data: Tours[] }) => {
                 if (res.status === "success") {
                     setRecords(res.data);
                     console.log(res.data);
@@ -70,7 +70,7 @@ const BestActivities = () => {
                                                         <div className="card-body p-3 rounded-4">
                                                             <div className="d-flex align-items-start justify-content-between">
                                                                 <div className="activity-name">{record.name}</div>
-                                                                <div className="activity-time d-flex align-items-center mt-1"><i className="fa fa-clock-o fs-6 text-warning me-1"></i> 8hrs</div>
+                                                                <div className="activity-time d-flex align-items-center"><i className="fa fa-clock-o fs-6 text-warning me-1"></i> 8hrs</div>
                                                             </div>
                                                             <div className="tour-address">
                                                                 <div className="list-inline-item"><i className="mdi mdi-map-marker"></i> {record.address}</div>
@@ -79,7 +79,7 @@ const BestActivities = () => {
                                                                 <div className="tour-company">
                                                                     <div className="company-name mb-3">
                                                                         {record.category.map((cate, index) => (
-                                                                            <span className="badge bg-soft-secondary fs-14 mt-1" key={index}>{cate}</span>
+                                                                            <span className="badge bg-soft-secondary fs-14" key={index}>{cate}</span>
                                                                         ))}
                                                                     </div>
                                                                     <div className="price-sec">

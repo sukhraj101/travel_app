@@ -1,70 +1,4 @@
-/* @import url('../../src/assets/'); */
-@font-face {
-  font-family: 'Gilroy';
-  src: url('./assets/fonts/Gilroy-Thin.ttf') format('truetype');
-  font-weight: 100;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Gilroy';
-  src: url('./assets/fonts/Gilroy-Light.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Gilroy';
-  src: url('./assets/fonts/Gilroy-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Gilroy';
-  src: url('./assets/fonts/Gilroy-Medium.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Gilroy';
-  src: url('./assets/fonts/Gilroy-SemiBold.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Gilroy';
-  src: url('./assets/fonts/Gilroy-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Gilroy';
-  src: url('./assets/fonts/Gilroy-ExtraBold.ttf') format('truetype');
-  font-weight: 800;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Gilroy';
-  src: url('./assets/fonts/Gilroy-Black.ttf') format('truetype');
-  font-weight: 900;
-  font-style: normal;
-}
-
-*, html, body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Gilroy';
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
+/* 
 .inter-font {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
@@ -91,9 +25,6 @@
 }
 
 
-
-/* bootstrap container */
-
 .container {
   width: 100%;
   padding-right: 15px;
@@ -104,40 +35,38 @@
 
 @media (min-width: 576px) {
   .container {
-      max-width: 540px; /* Custom max-width for small screens */
+      max-width: 540px;
   }
 }
 
 @media (min-width: 768px) {
   .container {
-      max-width: 720px; /* Custom max-width for medium screens */
+      max-width: 720px;
   }
 }
 
 @media (min-width: 992px) {
   .container {
-      max-width: 960px; /* Custom max-width for large screens */
+      max-width: 960px;
   }
 }
 
 @media (min-width: 1200px) {
   .container {
-      max-width: 1140px; /* Custom max-width for extra large screens */
+      max-width: 1140px;
   }
 }
 
 @media (min-width: 1300px) {
   .container {
-      max-width:1350px; /* Custom max-width for extra extra large screens */
+      max-width:1350px;
   }
 }
 @media (min-width: 1600px) {
   .container {
-      max-width: 1600px; /* Custom max-width for extra extra large screens */
+      max-width: 1600px;
   }
 }
-
-/* bootstrap container */
 
 .search_icon{
   position: absolute;
@@ -172,6 +101,7 @@ body:has(.schedule-wrpr) .navbar {
   -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
   animation: l13 1s infinite linear;
 }
-@keyframes l13{ 
+
+@keyframes l13 { 
   100% { transform: rotate(1turn); }
-}
+} */

@@ -39,7 +39,7 @@ const Subscription = () => {
             <div className="subcriptionSec">
                 <div className="container-fluid">
                         <div className='row text-center'>
-                        <h2>Transform Your Business <span className='text-purple'>with Our Subscription Packages</span></h2>
+                        <h2>Transform Your Business <span>with Our Subscription Packages</span></h2>
                         <p>Empower Your Store, Expand Your Reach, Increase Your Wealth</p>
 
 
@@ -47,20 +47,20 @@ const Subscription = () => {
                        <ul>
                             <li>
                                 <label htmlFor="Weekly">
-                                    <input id='Weekly' type="radio" value={'weekly'} checked={duration == 'weekly'} onChange={() => setDuration('weekly')}/> Weekly
-                                    <span className="switchCTA"></span>
+                                    <input id='Weekly' type="radio" value={'weekly'} checked={duration == 'weekly'} onChange={() => setDuration('weekly')}/>
+                                    <span className="switchCTA">Weekly</span>
                                 </label>
                             </li>
                             <li>
                                 <label htmlFor="Monthly">
-                                    <input id='Monthly' type="radio" value={'monthly'} onChange={() => setDuration('monthly')} checked={duration == 'monthly'}/> Monthly
-                                    <span className="switchCTA"></span>
+                                    <input id='Monthly' type="radio" value={'monthly'} onChange={() => setDuration('monthly')} checked={duration == 'monthly'}/>
+                                    <span className="switchCTA">Monthly</span>
                                 </label>
                             </li>
                             <li>
                                 <label htmlFor="Yearly">
-                                    <input id='Yearly' type="radio" value={'yearly'} onChange={() => setDuration('yearly')} checked={duration == 'yearly'}/> Yearly
-                                    <span className="switchCTA"></span>
+                                    <input id='Yearly' type="radio" value={'yearly'} onChange={() => setDuration('yearly')} checked={duration == 'yearly'}/>
+                                    <span className="switchCTA">Yearly</span>
                                 </label>
                             </li>
                         </ul>
@@ -81,7 +81,7 @@ const Subscription = () => {
                                                     <h4>{
                                                         item.type == '1' ? 'Basic' : (item.type == '2' ? 'Advance' : 'dds')
                                                      }</h4>
-                                                     <h4>{item?.title}</h4>
+                                                     <h5>{item?.title}</h5>
                                                      <p>{item?.tagline}</p>
                                                 </div>
                                                 <div className="packageIcon">

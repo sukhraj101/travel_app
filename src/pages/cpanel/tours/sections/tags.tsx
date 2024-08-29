@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, useEffect } from 'react';
 import Popup from '../../../../components/common/admin/components/popup/index';
-import { Controller, useFieldArray, useForm } from 'react-hook-form';
+import { Controller, useFieldArray, useForm, UseFormRegister } from 'react-hook-form';
 import { getRequest, postRequest } from '../../../../service';
 
 interface Tags {
@@ -19,8 +19,8 @@ type Translation = {
 
 interface TagSectionProps { 
   type: string;
-  name:string;
-  register:unknown
+  name: 'tags' | `translations.${number}`;
+  register: UseFormRegister<FormFields>;
 }
 
 const TagSection: React.FC<TagSectionProps> = ({register, type,name }) => {
@@ -29,6 +29,8 @@ const TagSection: React.FC<TagSectionProps> = ({register, type,name }) => {
   const [loading, setLoading] = useState<boolean>(false)
   const [records, setRecords] = useState<Tags[]>([]) 
   const { watch, reset, control } = useForm<FormFields>()
+
+  console.log(loading)
 
   const {
     fields: translationFields,

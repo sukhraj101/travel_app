@@ -15,8 +15,8 @@ interface Languages {
 
   }
 export default function AdminSettings() {
-  const [languages, setLanguages] = useState<Languages>();
-  const [currencies, setCurrency] = useState<Currency>();
+  const [languages, setLanguages] = useState<Languages[]>([]);
+  const [currencies, setCurrency] = useState<Currency[]>([]);
 
   useEffect(() => {
     getLanguages();

@@ -59,6 +59,7 @@ const Activities = () => {
     const [product, setProduct] = useState<Product>();
     useEffect(() => { 
       productDetail();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
   
   
@@ -71,6 +72,8 @@ const Activities = () => {
         })
         .catch((err: unknown) =>  console.log(err));
     };
+
+    console.log(galleryImages);
   return (
     <>
         <div className="container-fluid">

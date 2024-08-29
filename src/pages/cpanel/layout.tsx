@@ -4,6 +4,7 @@ import AdminSidebar from '../../components/common/admin/sidebar'
 import { useEffect, useState } from 'react'
 import { postRequest } from '../../service'
 import "./../../../public/admin/assets/css/style.min.css"
+import "./cpanel.css"
 
 const AdminLayout = () => { 
   const [isLogin,setIsLogin] = useState(false)
@@ -18,9 +19,6 @@ const AdminLayout = () => {
           }
       })
       .catch(() => {
-        // if(e.response.status == 401){
-        //  window.location.href = "/login"
-        // }
       }).finally(() => {
           console.log("done")
       });
@@ -62,8 +60,8 @@ const AdminLayout = () => {
           </div> */}
           <Outlet />
           <footer className="footer text-center">
-            All Rights Reserved by Matrix-admin. Designed and Developed by
-            <a href="https://www.wrappixel.com">WrapPixel</a>.
+            All Rights Reserved by Fivvia. Designed and Developed by&nbsp;
+            <a href="https://www.Fivvia.com">Fivvia</a>.
           </footer>
         </div>
       </div>

@@ -19,7 +19,7 @@ interface Addresses {
 
   interface LocationsProps {
     handlePickup: (e: React.ChangeEvent<HTMLInputElement>, checkbox: Addresses) => void;
-    addressIds: number[];
+    addressIds: string[];
   }
   
   const Locations: React.FC<LocationsProps> = ({
@@ -131,6 +131,22 @@ interface Addresses {
   const filteredRecords = records?.filter((record: { title: string; }) =>
     record.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const handlePickup = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    address: Addresses
+  ) => {
+    if (e.target.checked) {
+      // Check if the address is already in the pickupFields array
+      const isDuplicate = addressIds.includes(address.id.toString());
+      if (!isDuplicate) {
+        // Append address logic here
+      }
+    } else {
+      // Remove address logic here
+    }
+  };
+  
   return (
     <>
       <input
@@ -147,9 +163,9 @@ interface Addresses {
               type="checkbox"
               id={checkbox.id.toString()}
               className="form-check-input" 
-              checked={addressIds?.includes(checkbox?.id)}
-              onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handlePickup(e, checkbox) }
-              value={checkbox?.id}
+              checked={addressIds.includes(checkbox.id.toString())}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => handlePickup(e, checkbox)} 
+              value={checkbox.id.toString()}
             />
             <label className="form-check-label mb-0" htmlFor={checkbox.id.toString()}>
               {checkbox.title}
